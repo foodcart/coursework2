@@ -3,17 +3,13 @@ package controller;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.security.CodeSource;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-
-import model.Order;
-import model.OrderEntry;
 import model.OrderList;
 import model.OrderQueue;
 
 public class Manager {
+	public static final Integer TERMINATOR = new Integer(9999999);
+	public static final Integer WAIT_TIME_PER_ITEM = new Integer(2);
+	public static final Integer POS_SERVICE_TIME = new Integer(2);
 	private static OrderQueue shopQueue;
 	private static OrderList orderList;
 	
@@ -32,36 +28,6 @@ public class Manager {
 		return jarFile.getParentFile().getPath();
 	}
 	
-	private static void moveOrderToQueue(){
-		OrderEntry oe;
-		List<Order> ordersArray = null;
-		Integer currentCustomer = 0; 
-		Collection<Order> orders = orderList.getOrderItems();
-		Iterator<Order> oIterator = orders.iterator();
-		while (oIterator.hasNext()){
-			Order oneOrder = oIterator.next();
-			if(currentCustomer == 0){
-				currentCustomer = oneOrder.getCustomer();
-				ordersArray = new ArrayList<Order>();
-				ordersArray.add(oneOrder);
-				//shopQueue.add(oneOrder.getCustomer(), ordersArray.toArray(ordersArray.length));
-			}else{
-				if(currentCustomer == oneOrder.getCustomer()){
-					ordersArray.add(oneOrder);
-				}else{
-					shopQueue.add(currentCustomer, ordersArray.toArray(new Order[ordersArray.size()]));
-					currentCustomer = oneOrder.getCustomer();
-					ordersArray = new ArrayList<Order>();
-					ordersArray.add(oneOrder);
-				}
-			}
-		}
-		//maybe there isan OrdersArray pending to be added to the queue.
-		if(ordersArray.size()>0){
-			shopQueue.add(currentCustomer, ordersArray.toArray(new Order[ordersArray.size()]));
-		}
-		
-	}
 	
 	
 	public static void main(String[] args){
@@ -72,10 +38,17 @@ public class Manager {
 		shopQueue = new OrderQueue();
 		
 		//read the orders file to TreeMap
-		orderList = new OrderList(jarDir + File.separator + "orderlist.db");
-		
-		//move the treeMap to the Queue
-		moveOrderToQueue();
+		try {
+			orderList = new OrderList(jarDir + File.separator + "orderlist.db");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		//start the waiter threads.
+		new Thread(new Waiter(shopQueue),"Waiter 1").start();
+		new Thread(new Waiter(shopQueue),"Waiter 2").start();
+		//start the POS thread
+		new Thread(new PointOfSales(shopQueue, orderList.getOrderItems()),"POS 1").start();		
 	}
 	
 }

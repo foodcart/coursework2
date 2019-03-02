@@ -19,23 +19,34 @@ public class OrderEntry {
 	public void setClaim(String threadName){
 		this.processedByThread = threadName;
 		this.status = OrderStatus.PREPARING.status;
-		System.out.println("Customer orders Claimed from OrderQueue, Customer: " + this.orders[0].getCustomer() + " Thread: " + threadName);
+		System.out.println("Customer orders Claimed from OrderQueue, Customer: " + getCustomerID() + " Thread: " + threadName);
 	}
 	
 	public void setReady(){
 		this.status = OrderStatus.READY.status;
-		System.out.println("Status changed to Ready in OrderQueue for Customer: " + this.orders[0].getCustomer());
+		System.out.println("Status changed to Ready in OrderQueue for Customer: " + getCustomerID());
 		
 	}
 	
 	public void setComplete(){
 		this.status = OrderStatus.COMPLETED.status;
-		System.out.println("Status changed to Completed in OrderQueue for Customer: " + this.orders[0].getCustomer());
+		System.out.println("Status changed to Completed in OrderQueue for Customer: " + getCustomerID());
 	}
 	
 	public String getStatus(){
 		return this.status;
 	}
-		
+	
+	public Integer getCustomerID(){
+		return this.orders[orders.length-1].getCustomer();
+	}
+	
+	public Integer getItemCount(){
+		return this.numberofItems;
+	}
+	
+	public String getProcessingThread(){
+		return this.processedByThread;
+	}
 }
 

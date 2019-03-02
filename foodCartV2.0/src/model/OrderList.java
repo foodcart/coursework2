@@ -21,11 +21,14 @@ public class OrderList {
  * This is the constructor that reads the given file to populate the Order TreeMap	
  * @param file
  */
-	public OrderList(String file) {
+	public OrderList(String file) throws Exception {
 
 		FileName = file;//new String("../foodCart/core/orderlist.db");
 		OrderList = new TreeMap<Integer,Order>();
 		excpMessage = readFile(FileName);
+		if(!(excpMessage == null)){
+			throw excpMessage.getExcp();
+		}
 	}
 	
 	public OrderList() {
