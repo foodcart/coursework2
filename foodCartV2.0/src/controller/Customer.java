@@ -3,14 +3,17 @@
  */
 package controller;
 
+import java.util.Observable;
+import java.util.Observer;
+import java.util.logging.Level;
+
 import model.OrderEntry;
-import model.OrderQueue;
 
 /**
  * @author Vimal
  *
  */
-public class Customer implements Runnable {
+public class Customer implements Observer {
 
 	/**
 	 * 
@@ -18,16 +21,14 @@ public class Customer implements Runnable {
 	private OrderEntry myEntry;
 	public Customer(OrderEntry oEntry) {
 		this.myEntry = oEntry;
-		System.out.println("I am a Customer, and my ID is "+ myEntry.getCustomerID());
 	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Runnable#run()
 	 */
 	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-
+	public void update(Observable obj, Object arg){
+		System.out.println("This is Customer " + myEntry.getCustomerID()+ ". and I got my Order");
 	}
 
 }

@@ -2,6 +2,9 @@ package model;
 
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.logging.Level;
+
+import controller.Manager;
 
 
 public class OrderQueue {
@@ -17,7 +20,8 @@ public class OrderQueue {
 		OrderEntry oe = new OrderEntry(Orders);
 		orderQueue.put(CustomerID, oe);
 		newCount ++;
-		System.out.println("Added new Customer to OrderQueue, Customer: " + CustomerID );
+		Manager.getLogger().log(Level.FINE, "Added new Customer to OrderQueue, Customer: " + CustomerID);
+		//System.out.println("Added new Customer to OrderQueue, Customer: " + CustomerID );
 		notifyAll();
 		return orderQueue.get(CustomerID);
 	}
@@ -31,6 +35,7 @@ public class OrderQueue {
 		OrderEntry oe = null;
 		while(newCount == 0){
 			try {
+				Manager.getLogger().log(Level.FINE, "I am put to WAIT State");
 				wait();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
