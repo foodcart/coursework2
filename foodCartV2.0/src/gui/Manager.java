@@ -20,7 +20,7 @@ public class Manager {
 		System.out.println("foodCart Coffee Shop is running in dir : " + jarDir);
 		System.out.println("Please ensure the menuitems.db and orderlist.db files are placed here");
 // call gui		
-		new ShopGUI(jarDir);
+///		new ShopGUI(jarDir);
 	}
 
 }

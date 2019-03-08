@@ -1,8 +1,8 @@
-package gui;
+/*package gui;
 
-/* This is the class for the GUI for managing Coffee Shop sales 
+ This is the class for the GUI for managing Coffee Shop sales 
  * and inventory.
- */
+ 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -91,9 +91,9 @@ public class ShopGUI {
 			return value;
 		}
 	}
-	/*
+	
 	 * local class to keep organize order when preparing bill
-	 */
+	 
 	class WorkingOrder {
 		String item;
 		String category;
@@ -107,9 +107,9 @@ public class ShopGUI {
 			price = 0;
 		}
 	}
-/*
+
  * local class to help with reports
- */
+ 
 	class ReportData {
 		int orderCount;
 		double price;
@@ -129,7 +129,7 @@ public class ShopGUI {
 	// sub class actionListener for Category
 	class crActionListener implements ActionListener {
 		@Override
-		/** Listens to the radio buttons. */
+		*//** Listens to the radio buttons. *//*
 		public void actionPerformed(ActionEvent e) {
 			chosenItem = null;
 			panelWest.remove(itemPanel);
@@ -144,7 +144,7 @@ public class ShopGUI {
 	// sub class actionListener for menu Radiobuttons
 	class menuActionListener implements ActionListener {
 		@Override
-		/** Listens to the radio buttons. */
+		*//** Listens to the radio buttons. *//*
 		public void actionPerformed(ActionEvent e) {
 
 			chosenItem = ItemList.findByID(e.getActionCommand());
@@ -155,7 +155,7 @@ public class ShopGUI {
 	// sub class actionListener for other buttons
 	class ButtonsActionListener implements ActionListener {
 		@Override
-		/** Listens to the radio buttons. */
+		*//** Listens to the radio buttons. *//*
 		public void actionPerformed(ActionEvent e) {
 
 			// to do NEWO LISO SUMM ADDI REMI TOTA BILL
@@ -207,9 +207,9 @@ public class ShopGUI {
 		dialog("Exception reached: Please contact FoodCart Support", JOptionPane.ERROR_MESSAGE);
 	}
 
-	/*
+	
 	 * Generate report on Orders, items ordered, total revenue etc.
-	 */
+	 
 	private void generateReport( boolean onClose ) {
 		ReportData data; 
 		double totalrevenue = 0;
@@ -413,9 +413,9 @@ public class ShopGUI {
 		
 	}
 
-	/**
+	*//**
 	 * Apply discounts and generate bill
-	 */
+	 *//*
 	private void generateBill() {
 		if (!(model.getRowCount() > 0)) {
 			dialog("Please add items to the Order list before generating bill", JOptionPane.INFORMATION_MESSAGE);
@@ -578,11 +578,11 @@ public class ShopGUI {
 			if (!(retObj[0] == null)) {
 				Order order = (Order) retObj[0];
 				// get price from menulist
-				/*
+				
 				 * for (Entry<String, String> mEntry : menuItems.entrySet()) {
 				 * if (mEntry.getValue().equals(order.getItem())) { order_price
 				 * = ItemList.findByID(mEntry.getKey()).getCost(); break; } }
-				 */
+				 
 				billModel.insertRow(modelrow, new Object[] { Integer.toString(order.getID()), order.getItem(),
 						Integer.toString(order.getQuantity()), Double.toString(order_price),
 						Double.toString((order.getDiscount() * order_price)), Double.toString(order.getTotal()) });
@@ -682,9 +682,9 @@ public class ShopGUI {
 		}
 	}
 
-	/**
+	*//**
 	 * Remove item from model
-	 */
+	 *//*
 	private void removeItem() {
 		try {
 			int selectedRowID = oneOrder.getSelectedRow();
@@ -698,9 +698,9 @@ public class ShopGUI {
 		}
 	}
 
-	/**
+	*//**
 	 * add item to model
-	 */
+	 *//*
 	private void addItem() {
 		String colVal;
 		boolean exists = false;
@@ -971,9 +971,9 @@ public class ShopGUI {
 		panelCentre.setPreferredSize(new Dimension(430, 400));
 	}
 
-	/**
+	*//**
 	 * Method to display orders and servers
-	 */
+	 *//*
 	private void displayOrderList() {
 		
 		JPanel liso = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0));
@@ -1031,9 +1031,9 @@ public class ShopGUI {
 
 	}
 
-	/**
+	*//**
 	 * Customer Bill Panel
-	 */
+	 *//*
 	private void prepareEastPanel() {
 		panelEast = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0));
 		BillContainer = new JPanel();
@@ -1106,3 +1106,4 @@ public class ShopGUI {
 	}
 	
 }
+*/

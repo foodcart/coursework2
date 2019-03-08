@@ -9,31 +9,29 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 
+import log.LogKeeper;
 import model.InvalidQuantityException;
 import model.Order;
 import model.OrderEntry;
 import model.OrderQueue;
 
 /**
- * @author Vimal
- *
+ * @author Vimal this is the Point of Sales Thread This will add Customers and
+ *         their Orders from the Ordelist to the Shop Queue.
  */
 public class PointOfSales implements Runnable {
-
 	/**
-	 * 
+	 * myQueue is the Instance of the Shop Queue autoMode is when Orders are
+	 * being loaded from OrderList. orders is the Collection from the OrderList.
 	 */
 	private OrderQueue myQueue;
 	private boolean autoMode;
 	Collection<Order> orders;
 
 	public PointOfSales(OrderQueue oQueue, Collection<Order> orders) {
-
 		this.myQueue = oQueue;
 		this.autoMode = true;
 		this.orders = orders;
-		//System.out.println(Thread.currentThread().getName()+": I have opened the POS and waiting for Customers");
-
 	}
 
 	/*
@@ -43,39 +41,44 @@ public class PointOfSales implements Runnable {
 	 */
 	@Override
 	public void run() {
-		Manager.getLogger().log(Level.FINE, "I opened the POS and waiting for Customers");
+		LogKeeper.getInstance().addLog(Thread.currentThread().getName(), "Ready to Take Orders");
 		if (autoMode) {
-			Manager.getLogger().log(Level.FINE, "I am adding Orders from the OrderList now");
+			LogKeeper.getInstance().addLog(Thread.currentThread().getName(), "AutoMode:ON");
 			addOrderstoQueue();
 		}
+		LogKeeper.getInstance().addLog(Thread.currentThread().getName(), "AutoMode:OFF");
 
 	}
 
+	/*
+	 * Add Orders to the Shop Queue
+	 */
 	public void addOrderstoQueue() {
 		OrderEntry oEntry;
 		List<Order> ordersArray = null;
 		Integer currentCustomer = 0;
 		Iterator<Order> oIterator = orders.iterator();
+
+		LogKeeper.getInstance().addLog(Thread.currentThread().getName(), "Adding Orders from OrderList");
+
 		while (oIterator.hasNext()) {
 			Order oneOrder = oIterator.next();
 			if (currentCustomer == 0) {
 				currentCustomer = oneOrder.getCustomer();
 				ordersArray = new ArrayList<Order>();
 				ordersArray.add(oneOrder);
-				// shopQueue.add(oneOrder.getCustomer(),
-				// ordersArray.toArray(ordersArray.length));
 			} else {
 				if (currentCustomer == oneOrder.getCustomer()) {
 					ordersArray.add(oneOrder);
 				} else {
 					oEntry = this.myQueue.add(currentCustomer, ordersArray.toArray(new Order[ordersArray.size()]));
-					//new Thread(new Customer(oEntry)).start();
+					// new Thread(new Customer(oEntry)).start();
 					try {
 						Thread.sleep(new Long(Manager.POS_SERVICE_TIME * 1000));
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
-						//e.printStackTrace();
-						Manager.getLogger().log(Level.SEVERE, "Error in Thread.Sleep", e);
+						// e.printStackTrace();
+						LogKeeper.getInstance().addLog(Thread.currentThread().getName(), "Error in Thread.Sleep", e);
 					}
 					currentCustomer = oneOrder.getCustomer();
 					ordersArray = new ArrayList<Order>();
@@ -86,7 +89,7 @@ public class PointOfSales implements Runnable {
 		// maybe there is an OrdersArray pending to be added to the queue.
 		if (ordersArray.size() > 0) {
 			oEntry = this.myQueue.add(currentCustomer, ordersArray.toArray(new Order[ordersArray.size()]));
-			//new Thread(new Customer(oEntry)).start();
+			// new Thread(new Customer(oEntry)).start();
 		}
 		// add the terminator item.
 		try {
@@ -97,7 +100,7 @@ public class PointOfSales implements Runnable {
 			e.printStackTrace();
 		}
 		this.autoMode = false;// end automode
-		Manager.getLogger().log(Level.FINE, "I finished adding orders from OrderList");
+		LogKeeper.getInstance().addLog(Thread.currentThread().getName(), "Orders added");
 	}
 
 }

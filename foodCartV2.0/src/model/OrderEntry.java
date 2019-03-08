@@ -64,7 +64,6 @@ public class OrderEntry extends Observable{
 	public synchronized void isReady(){
 		while(!isReady){
 			try {
-				Manager.getLogger().log(Level.FINE, "I am put to WAIT State");
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
