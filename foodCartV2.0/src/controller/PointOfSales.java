@@ -72,14 +72,6 @@ public class PointOfSales implements Runnable {
 					ordersArray.add(oneOrder);
 				} else {
 					oEntry = this.myQueue.add(currentCustomer, ordersArray.toArray(new Order[ordersArray.size()]));
-					// new Thread(new Customer(oEntry)).start();
-					try {
-						Thread.sleep(new Long(Manager.POS_SERVICE_TIME * 1000));
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						// e.printStackTrace();
-						LogKeeper.getInstance().addLog(Thread.currentThread().getName(), "Error in Thread.Sleep", e);
-					}
 					currentCustomer = oneOrder.getCustomer();
 					ordersArray = new ArrayList<Order>();
 					ordersArray.add(oneOrder);
@@ -89,7 +81,6 @@ public class PointOfSales implements Runnable {
 		// maybe there is an OrdersArray pending to be added to the queue.
 		if (ordersArray.size() > 0) {
 			oEntry = this.myQueue.add(currentCustomer, ordersArray.toArray(new Order[ordersArray.size()]));
-			// new Thread(new Customer(oEntry)).start();
 		}
 		// add the terminator item.
 		try {

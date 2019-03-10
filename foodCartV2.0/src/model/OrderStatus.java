@@ -4,7 +4,7 @@ public enum OrderStatus {
 	NEW("New"),
 	PREPARING("Preparing"),
 	READY("Ready"),
-	PICKEDUP("Pciked Up"),
+	PICKEDUP("Delivered"),
 	COMPLETED("Completed");
 	
 	public final String status;

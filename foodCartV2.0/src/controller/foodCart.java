@@ -1,8 +1,7 @@
+package controller;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.security.CodeSource;
-
-import controller.Manager;
 
 public class foodCart {
 

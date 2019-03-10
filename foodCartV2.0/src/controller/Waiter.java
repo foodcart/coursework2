@@ -14,7 +14,7 @@ import model.OrderQueue;
  * @author Vimal
  *
  */
-public class Waiter extends Observable implements Runnable {
+public class Waiter  implements Runnable {
 
 	private String status;
 	private OrderEntry currentOrder;
@@ -69,7 +69,7 @@ public class Waiter extends Observable implements Runnable {
 					// else move the claimed entry to currentOrder and notify
 					// observers
 					currentOrder = oEntry;
-					notifyObservers();
+					//notifyObservers();
 					Integer itemCount = oEntry.getItemCount();
 					// process the item, i.e. wait till its prepared in kitchen
 					long waitForMillis = Manager.WAIT_TIME_PER_ITEM * itemCount * 1000;
@@ -77,8 +77,9 @@ public class Waiter extends Observable implements Runnable {
 						Thread.sleep(waitForMillis);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
-						// e.printStackTrace();
+						// 
 						LogKeeper.getInstance().addLog(Thread.currentThread().getName(), "Error in Thread.Sleep", e);
+						e.printStackTrace();
 					}
 					// items prep time over, so lets set it Ready
 					LogKeeper.getInstance().addLog(Thread.currentThread().getName(),
@@ -89,12 +90,13 @@ public class Waiter extends Observable implements Runnable {
 				}
 			} catch (Exception e) {
 				LogKeeper.getInstance().addLog(Thread.currentThread().getName(), "Error in processing", e);
+				e.printStackTrace();
 				exit = true;
 			}
 			// stopping so stop and notifyObservers
 			this.status = "Stopped";
 			LogKeeper.getInstance().addLog(Thread.currentThread().getName(), "Stopped");
-			notifyObservers();
+			//notifyObservers();
 		}
 	}
 

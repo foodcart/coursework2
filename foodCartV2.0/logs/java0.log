@@ -1,0 +1,33 @@
+Sun Mar 10 21:59:55 GST 2019|Manager|Starting up Application
+Sun Mar 10 21:59:55 GST 2019|Manager|...Starting up Shop Queue 
+Sun Mar 10 21:59:55 GST 2019|Manager|...OrderList loaded from C:\EclipseNeon\eclipse\vimal.sugar\git\coursework2\foodCartV2.0\orderlist.db
+Sun Mar 10 21:59:55 GST 2019|Manager|...Initializing 5 Waiter Thread(s)
+Sun Mar 10 21:59:55 GST 2019|Manager|...Initializing 1 POS Thread
+Sun Mar 10 21:59:55 GST 2019|Manager|...Started Thread: POS
+Sun Mar 10 21:59:55 GST 2019|POS|Ready to Take Orders
+Sun Mar 10 21:59:55 GST 2019|Manager|...Started Thread: Waiter0
+Sun Mar 10 21:59:55 GST 2019|POS|AutoMode:ON
+Sun Mar 10 21:59:55 GST 2019|Manager|...Started Thread: Waiter1
+Sun Mar 10 21:59:55 GST 2019|POS|Adding Orders from OrderList
+Sun Mar 10 21:59:55 GST 2019|Manager|Startup complete.
+Sun Mar 10 21:59:55 GST 2019|Waiter0|Running
+Sun Mar 10 21:59:55 GST 2019|Waiter1|Running
+Sun Mar 10 21:59:56 GST 2019|POS|Orders for CustomerID 101 added.
+Sun Mar 10 21:59:56 GST 2019|Customer 101|Thanks, I  will wait for my order
+Sun Mar 10 22:00:00 GST 2019|POS|Orders for CustomerID 102 added.
+Sun Mar 10 22:00:00 GST 2019|Customer 102|Thanks, I  will wait for my order
+Sun Mar 10 22:00:03 GST 2019|Waiter1|Preparing Orders for CustomerID 101
+Sun Mar 10 22:00:03 GST 2019|Waiter0|Preparing Orders for CustomerID 102
+Sun Mar 10 22:00:04 GST 2019|POS|Orders for CustomerID 103 added.
+Sun Mar 10 22:00:04 GST 2019|Customer 103|Thanks, I  will wait for my order
+Sun Mar 10 22:00:08 GST 2019|POS|Orders for CustomerID 104 added.
+Sun Mar 10 22:00:08 GST 2019|Customer 104|Thanks, I  will wait for my order
+Sun Mar 10 22:00:12 GST 2019|POS|Orders for CustomerID 105 added.
+Sun Mar 10 22:00:12 GST 2019|Customer 105|Thanks, I  will wait for my order
+Sun Mar 10 22:00:13 GST 2019|Waiter0|Order Ready for CustomerID 102
+Sun Mar 10 22:00:13 GST 2019|Waiter1|Order Ready for CustomerID 101
+Sun Mar 10 22:00:13 GST 2019|Waiter0|Error in processing
+Sun Mar 10 22:00:13 GST 2019|Waiter0|Stopped
+Sun Mar 10 22:00:15 GST 2019|Customer 101|I got my items. Thank you
+Sun Mar 10 22:00:16 GST 2019|POS|Orders for CustomerID 106 added.
+Sun Mar 10 22:00:16 GST 2019|Customer 106|Thanks, I  will wait for my order
