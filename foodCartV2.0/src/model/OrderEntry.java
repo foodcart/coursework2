@@ -13,6 +13,7 @@ public class OrderEntry extends Observable {
 	private boolean isReady;
 
 	public OrderEntry(Order[] orders) {
+		this.processedByThread = new String("");
 		this.orders = orders;
 		status = OrderStatus.NEW.status;
 		this.numberofItems = 0;
@@ -70,6 +71,9 @@ public class OrderEntry extends Observable {
 		return this.processedByThread;
 	}
 
+	public Order getItem(int i)throws ArrayIndexOutOfBoundsException{
+		return orders[i];
+	}
 	public synchronized void isReady() {
 		while (!isReady) {
 			try {

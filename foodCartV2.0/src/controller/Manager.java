@@ -110,7 +110,7 @@ public class Manager extends JFrame {
 		//prepare the reporting area also
 		log = new String();
 		// setup the Application Window.
-		preparePanels();
+		preparePanels(WaiterCount);
 		// initialize the OrderQueue
 		initShopQueue(jarDir, queueStatus);
 		// init the 5 waiter threads.
@@ -179,6 +179,7 @@ public class Manager extends JFrame {
 				;
 			}
 		}
+		queueStatus.linkToWaiters(waiterThreadArray);
 	}
 
 	private void initPOS() {
@@ -211,11 +212,12 @@ public class Manager extends JFrame {
 	/*
 	 * Prepare other panels
 	 */
-	private void preparePanels() {
+	private void preparePanels(Integer maxWaiters) {
 		// set look and feel of the UI
 		setDefaultLookAndFeel();
 		setWindowOnCloseHandler();
 		setNorthPanel();
+		setCenterPanel(maxWaiters);
 
 	}
 
@@ -242,6 +244,7 @@ public class Manager extends JFrame {
 		this.setTitle("FoodCart: Coffee Shop Manager");
 		// this.setIconImage(icon.getImage());
 		this.setSize(1000, 650);// 1200 width : 600 height
+		
 		this.setLocationRelativeTo(null);// to set to center
 		
 	}
@@ -275,6 +278,7 @@ public class Manager extends JFrame {
 		logFrame.setVisible(true);
 		
 	}	
+	
 	private void setNorthPanel() {
 		actionListener = new ButtonsActionListener();
 		NorthPanel northPanel = new NorthPanel(actionListener);
@@ -282,17 +286,20 @@ public class Manager extends JFrame {
 		northPanel.setButtonState("order", false);
 		northPanel.setButtonState("print", false);
 		northPanel.setButtonState("queue", false);
-		this.add(northPanel, BorderLayout.NORTH);
-		
+		this.add(northPanel, BorderLayout.NORTH);	
+	}
+	
+	private void setCenterPanel(Integer maxWaiters) {	
 		viewAnchor = new MainPanel();
-		setQueuePanel();
-		this.add(viewAnchor, BorderLayout.WEST);
+		setQueuePanel(maxWaiters);
+		JScrollPane viewScroller = new JScrollPane(viewAnchor);
+		this.add(viewScroller,BorderLayout.CENTER);
 		
 	}
 	
-	private void setQueuePanel(){
-		queueStatus = new QueueStatus();
-		viewAnchor.add(queueStatus,BorderLayout.NORTH);
+	private void setQueuePanel(Integer maxWaiters){
+		queueStatus = new QueueStatus(maxWaiters);
+		viewAnchor.add(queueStatus,BorderLayout.CENTER);
 		//this.add(queueStatus, BorderLayout.WEST);
 	}
 	

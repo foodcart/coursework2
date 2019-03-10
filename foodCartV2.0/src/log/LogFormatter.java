@@ -10,10 +10,14 @@ public class LogFormatter extends Formatter {
 	
 	@Override
     public String format(LogRecord record) {
-        return //record.getThreadID()+"::"+record.getSourceClassName()+"::"
-                //+record.getSourceMethodName()+"::"
-                new Date(record.getMillis())+fieldSeparator
-                +record.getMessage()+ System.lineSeparator() ;
+		String message = new String("");
+		try{message = record.getThrown().toString();}catch (Exception e) {
+			// TODO: handle exception
+		}
+        return new Date(record.getMillis())+fieldSeparator
+                +record.getMessage()
+                +message
+                +System.lineSeparator() ;      	
     }
 
 
