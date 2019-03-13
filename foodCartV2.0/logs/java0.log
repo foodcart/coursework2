@@ -1,102 +1,67 @@
-Wed Mar 13 17:05:53 GST 2019|Manager|Starting up Application 
-Wed Mar 13 17:05:53 GST 2019|Manager|...Starting up Shop Queue  
-Wed Mar 13 17:05:53 GST 2019|Manager|...OrderList loaded from C:\EclipseNeon\eclipse\vimal.sugar\git\coursework2\foodCartV2.0\orderlist.db 
-Wed Mar 13 17:05:53 GST 2019|Manager|...Initializing 5 Waiter Thread(s) 
-Wed Mar 13 17:05:53 GST 2019|Manager|...Initializing 1 POS Thread 
-Wed Mar 13 17:05:53 GST 2019|Manager|...Started Thread: POS 
-Wed Mar 13 17:05:53 GST 2019|POS|Ready to Take Orders 
-Wed Mar 13 17:05:53 GST 2019|Manager|...Started Thread: Waiter0 
-Wed Mar 13 17:05:53 GST 2019|POS|AutoMode:ON 
-Wed Mar 13 17:05:53 GST 2019|Manager|...Started Thread: Waiter1 
-Wed Mar 13 17:05:53 GST 2019|Waiter0|Running 
-Wed Mar 13 17:05:53 GST 2019|Waiter0|Going to WAIT State 
-Wed Mar 13 17:05:53 GST 2019|POS|Adding Orders from OrderList 
-Wed Mar 13 17:05:53 GST 2019|Manager|Startup complete. 
-Wed Mar 13 17:05:53 GST 2019|Waiter1|Running 
-Wed Mar 13 17:05:54 GST 2019|POS|Orders for CustomerID 101 added. 
-Wed Mar 13 17:05:54 GST 2019|Customer 101|Thanks, I  will wait for my order 
-Wed Mar 13 17:05:57 GST 2019|Waiter0|Preparing Orders for CustomerID 101 
-Wed Mar 13 17:05:57 GST 2019|Waiter1|Going to WAIT State 
-Wed Mar 13 17:05:57 GST 2019|Waiter2|Running 
-Wed Mar 13 17:05:57 GST 2019|Waiter3|Running 
-Wed Mar 13 17:05:57 GST 2019|Waiter4|Running 
-Wed Mar 13 17:05:58 GST 2019|POS|Orders for CustomerID 102 added. 
-Wed Mar 13 17:05:58 GST 2019|Customer 102|Thanks, I  will wait for my order 
-Wed Mar 13 17:06:01 GST 2019|Waiter1|Preparing Orders for CustomerID 102 
-Wed Mar 13 17:06:01 GST 2019|Waiter4|Going to WAIT State 
-Wed Mar 13 17:06:01 GST 2019|Waiter3|Going to WAIT State 
-Wed Mar 13 17:06:01 GST 2019|Waiter2|Going to WAIT State 
-Wed Mar 13 17:06:02 GST 2019|POS|Orders for CustomerID 103 added. 
-Wed Mar 13 17:06:02 GST 2019|Customer 103|Thanks, I  will wait for my order 
-Wed Mar 13 17:06:05 GST 2019|Waiter3|Going to WAIT State 
-Wed Mar 13 17:06:05 GST 2019|Waiter2|Preparing Orders for CustomerID 103 
-Wed Mar 13 17:06:05 GST 2019|Waiter4|Going to WAIT State 
-Wed Mar 13 17:06:06 GST 2019|POS|Orders for CustomerID 104 added. 
-Wed Mar 13 17:06:06 GST 2019|Customer 104|Thanks, I  will wait for my order 
-Wed Mar 13 17:06:07 GST 2019|Waiter0|Order Ready for CustomerID 101 
-Wed Mar 13 17:06:09 GST 2019|Waiter3|Going to WAIT State 
-Wed Mar 13 17:06:09 GST 2019|Waiter4|Preparing Orders for CustomerID 104 
-Wed Mar 13 17:06:10 GST 2019|POS|Orders for CustomerID 105 added. 
-Wed Mar 13 17:06:10 GST 2019|Customer 105|Thanks, I  will wait for my order 
-Wed Mar 13 17:06:11 GST 2019|Waiter1|Order Ready for CustomerID 102 
-Wed Mar 13 17:06:11 GST 2019|Customer 101|I got my items. Thank you 
-Wed Mar 13 17:06:13 GST 2019|Waiter0|Going to WAIT State 
-Wed Mar 13 17:06:13 GST 2019|Waiter3|Preparing Orders for CustomerID 105 
-Wed Mar 13 17:06:14 GST 2019|Waiter4|Order Ready for CustomerID 104 
-Wed Mar 13 17:06:14 GST 2019|POS|Orders for CustomerID 106 added. 
-Wed Mar 13 17:06:14 GST 2019|Customer 106|Thanks, I  will wait for my order 
-Wed Mar 13 17:06:14 GST 2019|Customer 102|I got my items. Thank you 
-Wed Mar 13 17:06:17 GST 2019|Waiter0|Preparing Orders for CustomerID 106 
-Wed Mar 13 17:06:17 GST 2019|Waiter1|Going to WAIT State 
-Wed Mar 13 17:06:18 GST 2019|POS|Orders for CustomerID 107 added. 
-Wed Mar 13 17:06:18 GST 2019|Customer 107|Thanks, I  will wait for my order 
-Wed Mar 13 17:06:19 GST 2019|Customer 104|I got my items. Thank you 
-Wed Mar 13 17:06:21 GST 2019|Waiter1|Preparing Orders for CustomerID 107 
-Wed Mar 13 17:06:21 GST 2019|Waiter4|Going to WAIT State 
-Wed Mar 13 17:06:22 GST 2019|Waiter0|Order Ready for CustomerID 106 
-Wed Mar 13 17:06:22 GST 2019|POS|Orders for CustomerID 108 added. 
-Wed Mar 13 17:06:22 GST 2019|Customer 108|Thanks, I  will wait for my order 
-Wed Mar 13 17:06:25 GST 2019|Waiter2|Order Ready for CustomerID 103 
-Wed Mar 13 17:06:25 GST 2019|Waiter4|Preparing Orders for CustomerID 108 
-Wed Mar 13 17:06:26 GST 2019|Customer 106|I got my items. Thank you 
-Wed Mar 13 17:06:26 GST 2019|POS|Orders for CustomerID 109 added. 
-Wed Mar 13 17:06:26 GST 2019|Customer 109|Thanks, I  will wait for my order 
-Wed Mar 13 17:06:28 GST 2019|Waiter3|Order Ready for CustomerID 105 
-Wed Mar 13 17:06:29 GST 2019|Waiter0|Preparing Orders for CustomerID 109 
-Wed Mar 13 17:06:30 GST 2019|Customer 103|I got my items. Thank you 
-Wed Mar 13 17:06:30 GST 2019|Waiter4|Order Ready for CustomerID 108 
-Wed Mar 13 17:06:30 GST 2019|POS|Orders for CustomerID 110 added. 
-Wed Mar 13 17:06:30 GST 2019|Customer 110|Thanks, I  will wait for my order 
-Wed Mar 13 17:06:30 GST 2019|Customer 105|I got my items. Thank you 
-Wed Mar 13 17:06:33 GST 2019|Waiter3|Preparing Orders for CustomerID 110 
-Wed Mar 13 17:06:33 GST 2019|Waiter2|Going to WAIT State 
-Wed Mar 13 17:06:34 GST 2019|Customer 108|I got my items. Thank you 
-Wed Mar 13 17:06:34 GST 2019|POS|Orders for CustomerID 111 added. 
-Wed Mar 13 17:06:34 GST 2019|Customer 111|Thanks, I  will wait for my order 
-Wed Mar 13 17:06:36 GST 2019|Waiter1|Order Ready for CustomerID 107 
-Wed Mar 13 17:06:38 GST 2019|POS|Orders for CustomerID 112 added. 
-Wed Mar 13 17:06:38 GST 2019|Customer 112|Thanks, I  will wait for my order 
-Wed Mar 13 17:06:39 GST 2019|Waiter0|Order Ready for CustomerID 109 
-Wed Mar 13 17:06:39 GST 2019|Customer 107|I got my items. Thank you 
-Wed Mar 13 17:06:41 GST 2019|Waiter2|Preparing Orders for CustomerID 111 
-Wed Mar 13 17:06:41 GST 2019|Waiter4|Preparing Orders for CustomerID 112 
-Wed Mar 13 17:06:42 GST 2019|Customer 109|I got my items. Thank you 
-Wed Mar 13 17:06:42 GST 2019|POS|==Last Customer in Queue== 
-Wed Mar 13 17:06:43 GST 2019|Waiter3|Order Ready for CustomerID 110 
-Wed Mar 13 17:06:45 GST 2019|POS|Orders added 
-Wed Mar 13 17:06:45 GST 2019|Waiter1|==Reached End of Shopping Queue== 
-Wed Mar 13 17:06:45 GST 2019|Waiter0|==Reached End of Shopping Queue== 
-Wed Mar 13 17:06:45 GST 2019|Waiter1|Stopped 
-Wed Mar 13 17:06:45 GST 2019|Waiter0|Stopped 
-Wed Mar 13 17:06:45 GST 2019|POS|AutoMode:OFF 
-Wed Mar 13 17:06:47 GST 2019|Customer 110|I got my items. Thank you 
-Wed Mar 13 17:06:47 GST 2019|Waiter3|==Reached End of Shopping Queue== 
-Wed Mar 13 17:06:47 GST 2019|Waiter3|Stopped 
-Wed Mar 13 17:06:51 GST 2019|Waiter2|Order Ready for CustomerID 111 
-Wed Mar 13 17:06:53 GST 2019|Customer 111|I got my items. Thank you 
-Wed Mar 13 17:06:53 GST 2019|Waiter2|==Reached End of Shopping Queue== 
-Wed Mar 13 17:06:53 GST 2019|Waiter2|Stopped 
-Wed Mar 13 17:07:01 GST 2019|Waiter4|Order Ready for CustomerID 112 
-Wed Mar 13 17:07:04 GST 2019|Customer 112|I got my items. Thank you 
-Wed Mar 13 17:07:04 GST 2019|Waiter4|==Reached End of Shopping Queue== 
-Wed Mar 13 17:07:04 GST 2019|Waiter4|Stopped 
+Wed Mar 13 17:19:54 GST 2019|Manager|Starting up Application 
+Wed Mar 13 17:19:54 GST 2019|Manager|...Starting up Shop Queue  
+Wed Mar 13 17:19:54 GST 2019|Manager|...OrderList loaded from C:\EclipseNeon\eclipse\vimal.sugar\git\coursework2\foodCartV2.0\orderlist.db 
+Wed Mar 13 17:19:54 GST 2019|Manager|...Initializing 5 Waiter Thread(s) 
+Wed Mar 13 17:19:54 GST 2019|Manager|...Initializing 1 POS Thread 
+Wed Mar 13 17:19:54 GST 2019|Manager|...Started Thread: POS 
+Wed Mar 13 17:19:54 GST 2019|POS|Ready to Take Orders 
+Wed Mar 13 17:19:54 GST 2019|Manager|...Started Thread: Waiter0 
+Wed Mar 13 17:19:54 GST 2019|POS|AutoMode:ON 
+Wed Mar 13 17:19:54 GST 2019|Manager|...Started Thread: Waiter1 
+Wed Mar 13 17:19:54 GST 2019|POS|Adding Orders from OrderList 
+Wed Mar 13 17:19:54 GST 2019|Manager|Startup complete. 
+Wed Mar 13 17:19:54 GST 2019|Waiter0|Running 
+Wed Mar 13 17:19:54 GST 2019|Waiter1|Running 
+Wed Mar 13 17:19:55 GST 2019|POS|Orders for CustomerID 101 added. 
+Wed Mar 13 17:19:55 GST 2019|Customer 101|Thanks, I  will wait for my order 
+Wed Mar 13 17:19:58 GST 2019|Waiter0|Going to WAIT State 
+Wed Mar 13 17:19:58 GST 2019|Waiter1|Preparing Orders for CustomerID 101 
+Wed Mar 13 17:19:59 GST 2019|POS|Orders for CustomerID 102 added. 
+Wed Mar 13 17:20:00 GST 2019|Customer 102|Thanks, I  will wait for my order 
+Wed Mar 13 17:20:03 GST 2019|Waiter0|Preparing Orders for CustomerID 102 
+Wed Mar 13 17:20:04 GST 2019|POS|Orders for CustomerID 103 added. 
+Wed Mar 13 17:20:04 GST 2019|Customer 103|Thanks, I  will wait for my order 
+Wed Mar 13 17:20:08 GST 2019|POS|Orders for CustomerID 104 added. 
+Wed Mar 13 17:20:08 GST 2019|Customer 104|Thanks, I  will wait for my order 
+Wed Mar 13 17:20:09 GST 2019|Waiter1|Order Ready for CustomerID 101 
+Wed Mar 13 17:20:11 GST 2019|Customer 101|I got my items. Thank you 
+Wed Mar 13 17:20:12 GST 2019|POS|Orders for CustomerID 105 added. 
+Wed Mar 13 17:20:12 GST 2019|Customer 105|Thanks, I  will wait for my order 
+Wed Mar 13 17:20:13 GST 2019|Waiter0|Order Ready for CustomerID 102 
+Wed Mar 13 17:20:15 GST 2019|Waiter1|Preparing Orders for CustomerID 103 
+Wed Mar 13 17:20:16 GST 2019|POS|Orders for CustomerID 106 added. 
+Wed Mar 13 17:20:16 GST 2019|Customer 106|Thanks, I  will wait for my order 
+Wed Mar 13 17:20:16 GST 2019|Customer 102|I got my items. Thank you 
+Wed Mar 13 17:20:19 GST 2019|Waiter0|Preparing Orders for CustomerID 104 
+Wed Mar 13 17:20:20 GST 2019|POS|Orders for CustomerID 107 added. 
+Wed Mar 13 17:20:20 GST 2019|Customer 107|Thanks, I  will wait for my order 
+Wed Mar 13 17:20:24 GST 2019|Waiter0|Order Ready for CustomerID 104 
+Wed Mar 13 17:20:24 GST 2019|POS|Orders for CustomerID 108 added. 
+Wed Mar 13 17:20:24 GST 2019|Customer 108|Thanks, I  will wait for my order 
+Wed Mar 13 17:20:27 GST 2019|Customer 104|I got my items. Thank you 
+Wed Mar 13 17:20:28 GST 2019|POS|Orders for CustomerID 109 added. 
+Wed Mar 13 17:20:28 GST 2019|Customer 109|Thanks, I  will wait for my order 
+Wed Mar 13 17:20:31 GST 2019|Waiter0|Preparing Orders for CustomerID 105 
+Wed Mar 13 17:20:32 GST 2019|POS|Orders for CustomerID 110 added. 
+Wed Mar 13 17:20:32 GST 2019|Customer 110|Thanks, I  will wait for my order 
+Wed Mar 13 17:20:35 GST 2019|Waiter1|Order Ready for CustomerID 103 
+Wed Mar 13 17:20:36 GST 2019|POS|Orders for CustomerID 111 added. 
+Wed Mar 13 17:20:36 GST 2019|Customer 111|Thanks, I  will wait for my order 
+Wed Mar 13 17:20:38 GST 2019|Customer 103|I got my items. Thank you 
+Wed Mar 13 17:20:39 GST 2019|Waiter1|Preparing Orders for CustomerID 106 
+Wed Mar 13 17:20:40 GST 2019|POS|Orders for CustomerID 112 added. 
+Wed Mar 13 17:20:40 GST 2019|Customer 112|Thanks, I  will wait for my order 
+Wed Mar 13 17:20:44 GST 2019|Waiter1|Order Ready for CustomerID 106 
+Wed Mar 13 17:20:44 GST 2019|POS|==Last Customer in Queue== 
+Wed Mar 13 17:20:46 GST 2019|Waiter0|Order Ready for CustomerID 105 
+Wed Mar 13 17:20:47 GST 2019|POS|Orders added 
+Wed Mar 13 17:20:47 GST 2019|POS|AutoMode:OFF 
+Wed Mar 13 17:20:48 GST 2019|Customer 106|I got my items. Thank you 
+Wed Mar 13 17:20:48 GST 2019|Waiter1|Preparing Orders for CustomerID 107 
+Wed Mar 13 17:20:48 GST 2019|Customer 105|I got my items. Thank you 
+Wed Mar 13 17:20:48 GST 2019|Waiter0|Preparing Orders for CustomerID 108 
+Wed Mar 13 17:20:53 GST 2019|Waiter0|Order Ready for CustomerID 108 
+Wed Mar 13 17:20:57 GST 2019|Customer 108|I got my items. Thank you 
+Wed Mar 13 17:20:57 GST 2019|Waiter0|Preparing Orders for CustomerID 109 
+Wed Mar 13 17:21:03 GST 2019|Waiter1|Order Ready for CustomerID 107 
+Wed Mar 13 17:21:07 GST 2019|Waiter0|Order Ready for CustomerID 109 

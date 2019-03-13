@@ -1,15 +1,11 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -37,6 +33,10 @@ import model.OrderStatus;
 
 public class QueueStatus extends JPanel implements Observer {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1695282276004883099L;
 	private DefaultTableModel orderModel;
 	private OrderQueue shopQueue;
 	private JTextArea[] waiterStatus;
@@ -59,6 +59,16 @@ public class QueueStatus extends JPanel implements Observer {
 		super(new GridLayout(1, 2));
 
 		this.maxWaiters = maxWaiters;
+		//Order processing status
+		prepareLeftPane();
+		// Waiter status
+		prepareRightPane();
+		
+
+	}
+
+	private void prepareLeftPane(){
+
 		int cpHeight = this.getHeight();
 		this.getBounds().setSize(20, cpHeight);
 		// Order Status
@@ -70,7 +80,10 @@ public class QueueStatus extends JPanel implements Observer {
 		JScrollPane tableHolder = new JScrollPane(statusTable);
 		catPanel.add(tableHolder);
 		this.add(catPanel);
-		// Waiter status
+		
+	}
+	
+	private void prepareRightPane(){
 		JPanel wPanel = new JPanel();
 		// new GridLayout(maxWaiters+1, 1)
 		wPanel.setLayout(new BoxLayout(wPanel, BoxLayout.Y_AXIS));
@@ -83,9 +96,8 @@ public class QueueStatus extends JPanel implements Observer {
 		JScrollPane wScrollPane = new JScrollPane(wPanel);
 		wScrollPane.setBorder(BorderFactory.createEmptyBorder());
 		this.add(wScrollPane);
-
 	}
-
+	
 	private void prepareWaiterSelBox(Integer maxWaiters, JPanel wPanel) {
 		String[] comboItems = new String[maxWaiters];
 		for (int i = 0; i < maxWaiters; i++) {
@@ -107,8 +119,9 @@ public class QueueStatus extends JPanel implements Observer {
 			 */
 			public void actionPerformed(ActionEvent e) {
 				if (e.getActionCommand().equals("WAIT")) {
+					
 					Integer maxWaiters = waiterNumber.getSelectedIndex();
-
+					LogKeeper.getInstance().addLog("Manager/QueueStatus", "Setting Active Waiters to "+ (maxWaiters+1));
 					for (int i = 0; i < waiterThreadArray.size(); i++) {
 						// for threads more than specified number.
 						if (i > (maxWaiters)) {
@@ -256,11 +269,11 @@ public class QueueStatus extends JPanel implements Observer {
 						for (int i = 0; i < oe.getOrderCount(); i++) {
 							
 							status = Integer.toString(i+1) + ")" 
-									+ oe.getItem(i).getQuantity()		
+									+ oe.getItem(i).getQuantity()+"No(s). "		
+									+ oe.getItem(i).getItem()
 									+ System.lineSeparator();
 							waiterStatus[index].append(status); 
-							/*waiterStatus[index].append(i + 1 + ")" + oe.getItem(i).getQuantity() + " "
-									+ oe.getItem(i).getItem() + System.lineSeparator());*/
+	
 						}
 						}
 					} 
