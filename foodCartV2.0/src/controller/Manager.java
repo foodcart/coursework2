@@ -179,7 +179,7 @@ public class Manager extends JFrame {
 				;
 			}
 		}
-		queueStatus.linkToWaiters(waiterThreadArray);
+		queueStatus.linkToWaiters(waiterThreadArray, waiterArray);
 	}
 
 	private void initPOS() {
@@ -242,8 +242,8 @@ public class Manager extends JFrame {
 		this.setLayout(new BorderLayout(2, 2));
 		// set output properties of the frame.
 		this.setTitle("FoodCart: Coffee Shop Manager");
-		// this.setIconImage(icon.getImage());
-		this.setSize(1000, 650);// 1200 width : 600 height
+		// this.setIconImage(icn.getImage());
+		this.setSize(1000, 700);// 1200 width : 600 height
 		
 		this.setLocationRelativeTo(null);// to set to center
 		
@@ -326,11 +326,11 @@ public class Manager extends JFrame {
 		System.out.println("Closing......");
 		this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 	}
-
-	/*
-	 * Sub classes for Action Handling etc
+	/**
+	 * This is the Action Listener for the Buttons on North Panel
+	 * @author Vimal
+	 *
 	 */
-	// sub class actionListener for other buttons
 	class ButtonsActionListener implements ActionListener {
 		/*
 		 * Listens to Button Presses on the ToolBar (non-Javadoc)
@@ -340,8 +340,17 @@ public class Manager extends JFrame {
 		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			switch (e.getActionCommand()){
+			//show queue
+			case "SQUE": break;
+			//generate summary report
+			case "SUMM": break;
+			//show list of orders
+			case "LISO": break;
+			// take new order
+			case "NEWO": break;
+			}
 		}
 
 	}
-
 }

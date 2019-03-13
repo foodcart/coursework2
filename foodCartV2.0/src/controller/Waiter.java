@@ -58,13 +58,16 @@ public class Waiter  implements Runnable {
 				for (OrderEntry oEntry = myQueue.claim(Thread.currentThread().getName()); oEntry
 						.getCustomerID() <= Manager.TERMINATOR; oEntry = myQueue
 								.claim(Thread.currentThread().getName())) {
-					// log the claim
-					LogKeeper.getInstance().addLog(Thread.currentThread().getName(),
-							"Preparing Orders for CustomerID " + oEntry.getCustomerID());
 					// check if entry is End of Queue, then Stop Thread.
 					if (oEntry.getCustomerID().equals(Manager.TERMINATOR)) {
+						LogKeeper.getInstance().addLog(Thread.currentThread().getName(),
+								"==Reached End of Shopping Queue==");
 						exit = true;
 						break;
+					}else{
+						// log the claim
+						LogKeeper.getInstance().addLog(Thread.currentThread().getName(),
+								"Preparing Orders for CustomerID " + oEntry.getCustomerID());
 					}
 					// else move the claimed entry to currentOrder and notify
 					// observers

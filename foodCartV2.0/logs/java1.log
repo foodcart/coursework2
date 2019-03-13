@@ -1,1 +1,19 @@
-Sun Mar 10 00:12:14 GST 2019|Manager|Starting up Application
+Wed Mar 13 16:56:52 GST 2019|Manager|Starting up Application 
+Wed Mar 13 16:56:52 GST 2019|Manager|...Starting up Shop Queue  
+Wed Mar 13 16:56:52 GST 2019|Manager|...OrderList loaded from C:\EclipseNeon\eclipse\vimal.sugar\git\coursework2\foodCartV2.0\orderlist.db 
+Wed Mar 13 16:56:52 GST 2019|Manager|...Initializing 5 Waiter Thread(s) 
+Wed Mar 13 16:56:52 GST 2019|Manager|...Initializing 1 POS Thread 
+Wed Mar 13 16:56:52 GST 2019|Manager|...Started Thread: POS 
+Wed Mar 13 16:56:52 GST 2019|POS|Ready to Take Orders 
+Wed Mar 13 16:56:52 GST 2019|Manager|...Started Thread: Waiter0 
+Wed Mar 13 16:56:52 GST 2019|POS|AutoMode:ON 
+Wed Mar 13 16:56:52 GST 2019|Manager|...Started Thread: Waiter1 
+Wed Mar 13 16:56:52 GST 2019|POS|Adding Orders from OrderList 
+Wed Mar 13 16:56:52 GST 2019|Waiter0|Running 
+Wed Mar 13 16:56:52 GST 2019|Waiter0|Going to WAIT State 
+Wed Mar 13 16:56:52 GST 2019|Manager|Startup complete. 
+Wed Mar 13 16:56:52 GST 2019|Waiter1|Running 
+Wed Mar 13 16:56:53 GST 2019|POS|Orders for CustomerID 101 added. 
+Wed Mar 13 16:56:53 GST 2019|Customer 101|Thanks, I  will wait for my order 
+Wed Mar 13 16:56:57 GST 2019|POS|Orders for CustomerID 102 added. 
+Wed Mar 13 16:56:57 GST 2019|Customer 102|Thanks, I  will wait for my order 

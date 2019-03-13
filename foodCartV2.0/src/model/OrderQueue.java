@@ -41,13 +41,18 @@ public class OrderQueue extends Observable {
 		orderQueue.put(CustomerID, oe);
 		// increment count of New items
 		newCount++;
-		if(!(CustomerID.equals(Manager.TERMINATOR))){
+		if((CustomerID.equals(Manager.TERMINATOR))){
+			LogKeeper.getInstance().addLog(Thread.currentThread().getName(),
+					"==Last Customer in Queue==");
+		}
+		else{
 		LogKeeper.getInstance().addLog(Thread.currentThread().getName(),
 				"Orders for CustomerID " + CustomerID + " added.");
 		// get reference back and add customer as observer
 		orderQueue.get(CustomerID).addObserver(new Customer(orderQueue.get(CustomerID)));
 		// also add queueStatus view as the observer
 		orderQueue.get(CustomerID).addObserver(queueStatus); }
+
 		// notify the view that a new order has been added
 		this.setChanged();
 		notifyObservers();

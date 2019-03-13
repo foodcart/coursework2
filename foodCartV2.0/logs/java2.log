@@ -1,36 +1,96 @@
-Sun Mar 10 01:13:51 GST 2019|Manager|Starting up Application
-Sun Mar 10 01:13:51 GST 2019|Manager|...Starting up Shop Queue 
-Sun Mar 10 01:13:51 GST 2019|Manager|...OrderList loaded from C:\EclipseNeon\eclipse\vimal.sugar\git\coursework2\foodCartV2.0\orderlist.db
-Sun Mar 10 01:13:51 GST 2019|Manager|...Initializing 5 Waiter Thread(s)
-Sun Mar 10 01:13:51 GST 2019|Manager|...Initializing 1 POS Thread
-Sun Mar 10 01:13:51 GST 2019|Manager|...Started Thread: POS
-Sun Mar 10 01:13:51 GST 2019|POS|Ready to Take Orders
-Sun Mar 10 01:13:51 GST 2019|POS|AutoMode:ON
-Sun Mar 10 01:13:51 GST 2019|POS|Adding Orders from OrderList
-Sun Mar 10 01:13:51 GST 2019|Manager|...Started Thread: Waiter0
-Sun Mar 10 01:13:51 GST 2019|Manager|...Started Thread: Waiter1
-Sun Mar 10 01:13:51 GST 2019|Waiter0|Running
-Sun Mar 10 01:13:51 GST 2019|Manager|Startup complete.
-Sun Mar 10 01:13:51 GST 2019|Waiter1|Running
-Sun Mar 10 01:13:56 GST 2019|POS|Orders for CustomerID 101 added.
-Sun Mar 10 01:13:56 GST 2019|Customer 101|Thanks, I  will wait for my order
-Sun Mar 10 01:14:01 GST 2019|Customer 101|I got my items. Thank you
-Sun Mar 10 01:14:01 GST 2019|Waiter0|Going to WAIT State
-Sun Mar 10 01:14:01 GST 2019|Waiter1|Preparing Orders for CustomerID 101
-Sun Mar 10 01:14:06 GST 2019|POS|Orders for CustomerID 102 added.
-Sun Mar 10 01:14:06 GST 2019|Customer 102|Thanks, I  will wait for my order
-Sun Mar 10 01:14:07 GST 2019|Waiter1|Order Ready for CustomerID 101
-Sun Mar 10 01:14:10 GST 2019|Customer 101|I got my items. Thank you
-Sun Mar 10 01:14:12 GST 2019|Customer 102|I got my items. Thank you
-Sun Mar 10 01:14:12 GST 2019|Waiter0|Preparing Orders for CustomerID 102
-Sun Mar 10 01:14:12 GST 2019|Waiter1|Going to WAIT State
-Sun Mar 10 01:14:17 GST 2019|POS|Orders for CustomerID 103 added.
-Sun Mar 10 01:14:17 GST 2019|Customer 103|Thanks, I  will wait for my order
-Sun Mar 10 01:14:18 GST 2019|Waiter0|Order Ready for CustomerID 102
-Sun Mar 10 01:14:21 GST 2019|Customer 102|I got my items. Thank you
-Sun Mar 10 01:14:24 GST 2019|POS|Orders for CustomerID 104 added.
-Sun Mar 10 01:14:24 GST 2019|Customer 104|Thanks, I  will wait for my order
-Sun Mar 10 01:14:31 GST 2019|POS|Orders for CustomerID 105 added.
-Sun Mar 10 01:14:31 GST 2019|Customer 105|Thanks, I  will wait for my order
-Sun Mar 10 01:14:38 GST 2019|POS|Orders for CustomerID 106 added.
-Sun Mar 10 01:14:38 GST 2019|Customer 106|Thanks, I  will wait for my order
+Wed Mar 13 16:16:23 GST 2019|Manager|Starting up Application 
+Wed Mar 13 16:16:23 GST 2019|Manager|...Starting up Shop Queue  
+Wed Mar 13 16:16:23 GST 2019|Manager|...OrderList loaded from C:\EclipseNeon\eclipse\vimal.sugar\git\coursework2\foodCartV2.0\orderlist.db 
+Wed Mar 13 16:16:23 GST 2019|Manager|...Initializing 5 Waiter Thread(s) 
+Wed Mar 13 16:16:23 GST 2019|Manager|...Initializing 1 POS Thread 
+Wed Mar 13 16:16:23 GST 2019|Manager|...Started Thread: POS 
+Wed Mar 13 16:16:23 GST 2019|POS|Ready to Take Orders 
+Wed Mar 13 16:16:23 GST 2019|Manager|...Started Thread: Waiter0 
+Wed Mar 13 16:16:23 GST 2019|POS|AutoMode:ON 
+Wed Mar 13 16:16:23 GST 2019|Manager|...Started Thread: Waiter1 
+Wed Mar 13 16:16:23 GST 2019|Waiter0|Running 
+Wed Mar 13 16:16:23 GST 2019|POS|Adding Orders from OrderList 
+Wed Mar 13 16:16:23 GST 2019|Manager|Startup complete. 
+Wed Mar 13 16:16:23 GST 2019|Waiter1|Running 
+Wed Mar 13 16:16:23 GST 2019|Waiter0|Going to WAIT State 
+Wed Mar 13 16:16:24 GST 2019|POS|Orders for CustomerID 101 added. 
+Wed Mar 13 16:16:24 GST 2019|Customer 101|Thanks, I  will wait for my order 
+Wed Mar 13 16:16:27 GST 2019|Waiter1|Preparing Orders for CustomerID 101 
+Wed Mar 13 16:16:28 GST 2019|POS|Orders for CustomerID 102 added. 
+Wed Mar 13 16:16:28 GST 2019|Customer 102|Thanks, I  will wait for my order 
+Wed Mar 13 16:16:31 GST 2019|Waiter0|Preparing Orders for CustomerID 102 
+Wed Mar 13 16:16:32 GST 2019|POS|Orders for CustomerID 103 added. 
+Wed Mar 13 16:16:32 GST 2019|Customer 103|Thanks, I  will wait for my order 
+Wed Mar 13 16:16:36 GST 2019|POS|Orders for CustomerID 104 added. 
+Wed Mar 13 16:16:36 GST 2019|Customer 104|Thanks, I  will wait for my order 
+Wed Mar 13 16:16:37 GST 2019|Waiter1|Order Ready for CustomerID 101 
+Wed Mar 13 16:16:40 GST 2019|POS|Orders for CustomerID 105 added. 
+Wed Mar 13 16:16:40 GST 2019|Customer 105|Thanks, I  will wait for my order 
+Wed Mar 13 16:16:41 GST 2019|Waiter0|Order Ready for CustomerID 102 
+Wed Mar 13 16:16:42 GST 2019|Customer 101|I got my items. Thank you 
+Wed Mar 13 16:16:43 GST 2019|Waiter1|Error in status update java.lang.ArrayIndexOutOfBoundsException: 2
+Wed Mar 13 16:16:43 GST 2019|Waiter1|Preparing Orders for CustomerID 103 
+Wed Mar 13 16:16:44 GST 2019|POS|Orders for CustomerID 106 added. 
+Wed Mar 13 16:16:44 GST 2019|Customer 106|Thanks, I  will wait for my order 
+Wed Mar 13 16:16:44 GST 2019|POS|Error in status update java.lang.ArrayIndexOutOfBoundsException: 2
+Wed Mar 13 16:16:46 GST 2019|Customer 102|I got my items. Thank you 
+Wed Mar 13 16:16:46 GST 2019|Waiter0|Error in status update java.lang.ArrayIndexOutOfBoundsException: 2
+Wed Mar 13 16:16:47 GST 2019|Waiter0|Error in status update java.lang.ArrayIndexOutOfBoundsException: 2
+Wed Mar 13 16:16:47 GST 2019|Waiter0|Preparing Orders for CustomerID 104 
+Wed Mar 13 16:16:48 GST 2019|POS|Orders for CustomerID 107 added. 
+Wed Mar 13 16:16:48 GST 2019|Customer 107|Thanks, I  will wait for my order 
+Wed Mar 13 16:16:48 GST 2019|POS|Error in status update java.lang.ArrayIndexOutOfBoundsException: 2
+Wed Mar 13 16:16:52 GST 2019|Waiter0|Order Ready for CustomerID 104 
+Wed Mar 13 16:16:52 GST 2019|Waiter0|Error in status update java.lang.ArrayIndexOutOfBoundsException: 2
+Wed Mar 13 16:16:52 GST 2019|POS|Orders for CustomerID 108 added. 
+Wed Mar 13 16:16:52 GST 2019|Customer 108|Thanks, I  will wait for my order 
+Wed Mar 13 16:16:52 GST 2019|POS|Error in status update java.lang.ArrayIndexOutOfBoundsException: 2
+Wed Mar 13 16:16:56 GST 2019|POS|Orders for CustomerID 109 added. 
+Wed Mar 13 16:16:56 GST 2019|Customer 109|Thanks, I  will wait for my order 
+Wed Mar 13 16:16:56 GST 2019|POS|Error in status update java.lang.ArrayIndexOutOfBoundsException: 2
+Wed Mar 13 16:16:57 GST 2019|Customer 104|I got my items. Thank you 
+Wed Mar 13 16:16:57 GST 2019|Waiter0|Error in status update java.lang.ArrayIndexOutOfBoundsException: 2
+Wed Mar 13 16:16:59 GST 2019|Waiter0|Error in status update java.lang.ArrayIndexOutOfBoundsException: 2
+Wed Mar 13 16:16:59 GST 2019|Waiter0|Preparing Orders for CustomerID 105 
+Wed Mar 13 16:17:00 GST 2019|POS|Orders for CustomerID 110 added. 
+Wed Mar 13 16:17:00 GST 2019|Customer 110|Thanks, I  will wait for my order 
+Wed Mar 13 16:17:00 GST 2019|POS|Error in status update java.lang.ArrayIndexOutOfBoundsException: 2
+Wed Mar 13 16:17:03 GST 2019|Waiter1|Order Ready for CustomerID 103 
+Wed Mar 13 16:17:04 GST 2019|POS|Orders for CustomerID 111 added. 
+Wed Mar 13 16:17:04 GST 2019|Customer 111|Thanks, I  will wait for my order 
+Wed Mar 13 16:17:08 GST 2019|Customer 103|I got my items. Thank you 
+Wed Mar 13 16:17:08 GST 2019|POS|Orders for CustomerID 112 added. 
+Wed Mar 13 16:17:08 GST 2019|Customer 112|Thanks, I  will wait for my order 
+Wed Mar 13 16:17:11 GST 2019|Waiter1|Preparing Orders for CustomerID 106 
+Wed Mar 13 16:17:14 GST 2019|Waiter0|Order Ready for CustomerID 105 
+Wed Mar 13 16:17:15 GST 2019|POS|Orders added 
+Wed Mar 13 16:17:15 GST 2019|POS|AutoMode:OFF 
+Wed Mar 13 16:17:16 GST 2019|Waiter1|Order Ready for CustomerID 106 
+Wed Mar 13 16:17:19 GST 2019|Customer 105|I got my items. Thank you 
+Wed Mar 13 16:17:19 GST 2019|Waiter0|Preparing Orders for CustomerID 107 
+Wed Mar 13 16:17:20 GST 2019|Customer 106|I got my items. Thank you 
+Wed Mar 13 16:17:20 GST 2019|Waiter1|Preparing Orders for CustomerID 108 
+Wed Mar 13 16:17:25 GST 2019|Waiter1|Order Ready for CustomerID 108 
+Wed Mar 13 16:17:28 GST 2019|Customer 108|I got my items. Thank you 
+Wed Mar 13 16:17:28 GST 2019|Waiter1|Preparing Orders for CustomerID 109 
+Wed Mar 13 16:17:34 GST 2019|Waiter0|Order Ready for CustomerID 107 
+Wed Mar 13 16:17:36 GST 2019|Customer 107|I got my items. Thank you 
+Wed Mar 13 16:17:36 GST 2019|Waiter0|Preparing Orders for CustomerID 110 
+Wed Mar 13 16:17:38 GST 2019|Waiter1|Order Ready for CustomerID 109 
+Wed Mar 13 16:17:41 GST 2019|Customer 109|I got my items. Thank you 
+Wed Mar 13 16:17:41 GST 2019|Waiter1|Error in status update java.lang.ArrayIndexOutOfBoundsException: 1
+Wed Mar 13 16:17:41 GST 2019|Waiter1|Preparing Orders for CustomerID 111 
+Wed Mar 13 16:17:46 GST 2019|Waiter0|Order Ready for CustomerID 110 
+Wed Mar 13 16:17:46 GST 2019|Waiter0|Error in status update java.lang.ArrayIndexOutOfBoundsException: 1
+Wed Mar 13 16:17:50 GST 2019|Customer 110|I got my items. Thank you 
+Wed Mar 13 16:17:50 GST 2019|Waiter0|Error in status update java.lang.ArrayIndexOutOfBoundsException: 1
+Wed Mar 13 16:17:50 GST 2019|Waiter0|Error in status update java.lang.ArrayIndexOutOfBoundsException: 1
+Wed Mar 13 16:17:50 GST 2019|Waiter0|Preparing Orders for CustomerID 112 
+Wed Mar 13 16:17:51 GST 2019|Waiter1|Order Ready for CustomerID 111 
+Wed Mar 13 16:17:55 GST 2019|Customer 111|I got my items. Thank you 
+Wed Mar 13 16:17:55 GST 2019|Waiter1|Preparing Orders for CustomerID 9999999 
+Wed Mar 13 16:17:55 GST 2019|Waiter1|Stopped 
+Wed Mar 13 16:18:10 GST 2019|Waiter0|Order Ready for CustomerID 112 
+Wed Mar 13 16:18:15 GST 2019|Customer 112|I got my items. Thank you 
+Wed Mar 13 16:18:15 GST 2019|Waiter0|Preparing Orders for CustomerID 9999999 
+Wed Mar 13 16:18:15 GST 2019|Waiter0|Stopped 

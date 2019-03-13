@@ -62,6 +62,10 @@ public class OrderEntry extends Observable {
 	public Integer getCustomerID() {
 		return this.orders[orders.length - 1].getCustomer();
 	}
+	
+	public Integer getOrderCount(){
+		return this.orders.length;
+	}
 
 	public Integer getItemCount() {
 		return this.numberofItems;

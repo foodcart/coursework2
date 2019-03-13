@@ -16,7 +16,7 @@ public class LogFormatter extends Formatter {
 		}
         return new Date(record.getMillis())+fieldSeparator
                 +record.getMessage()
-                +message
+                +" "+message
                 +System.lineSeparator() ;      	
     }
 
