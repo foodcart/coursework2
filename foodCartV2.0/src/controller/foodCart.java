@@ -26,7 +26,7 @@ public class foodCart {
  */
 	public static void main(String[] args){
 		
-		Manager.getInstance(getCurrentDirectory());
+		Manager.getInstance(getCurrentDirectory(), 5);
 		
 	}
 }

@@ -38,11 +38,9 @@ public class Manager extends JFrame {
 	// max orders/customers
 	public static final Integer TERMINATOR = new Integer(9999999);
 	// wait time for preparing each item
-	public static final Integer WAIT_TIME_PER_ITEM = new Integer(5);
+	public static volatile Integer WAIT_TIME_PER_ITEM = new Integer(10);
 	// wait time at POS
-	public static final Integer POS_SERVICE_TIME = new Integer(1);
-	// wait time at POS to notify waiter
-	public static final Integer POS_NOTIFY_TIME = new Integer(3);
+	public static volatile Integer POS_SERVICE_TIME = new Integer(10);
 	// file for logger props
 	private static final String logProperties = new String("logger.properties");
 	// this class identifies
@@ -71,9 +69,9 @@ public class Manager extends JFrame {
 	/*
 	 * This class is also a SingleTon, so return its instance.
 	 */
-	public static Manager getInstance(String jarDir) {
+	public static Manager getInstance(String jarDir, Integer maxWaiters) {
 		if (myInstance == null)
-			myInstance = new Manager(jarDir);
+			myInstance = new Manager(jarDir, maxWaiters);
 		return myInstance;
 	}
 	
@@ -92,13 +90,13 @@ public class Manager extends JFrame {
 	/*
 	 * Private constructor
 	 */
-	private Manager(String jarDir) {
+	private Manager(String jarDir, Integer maxWaiter) {
 		// this class is also a JFrame, so init itself.
 		super();
 		// init the Singleton Logger
 		initLogger(jarDir);
 		// startup the application
-		startUp(jarDir, 5);
+		startUp(jarDir, maxWaiter);
 	}
 
 	/*

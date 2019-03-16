@@ -56,14 +56,6 @@ public class OrderQueue extends Observable {
 		// notify the view that a new order has been added
 		this.setChanged();
 		notifyObservers();
-		try {
-			Thread.sleep(new Long(Manager.POS_NOTIFY_TIME * 1000));
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			LogKeeper.getInstance().addLog(Thread.currentThread().getName(), "Error in Thread.Sleep", e);
-
-		}
 		// Notify the Waiters
 		notifyAll();
 		return orderQueue.get(CustomerID);

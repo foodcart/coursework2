@@ -16,7 +16,9 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -44,6 +46,10 @@ public class QueueStatus extends JPanel implements Observer {
 	private ArrayList<Thread> waiterThreadArray;
 	private ArrayList<Waiter> waiterArray;
 	private Integer maxWaiters;
+	private JComboBox waiterNumber;
+	private JComboBox waitSeconds;
+	private JComboBox newOrderSeconds;
+	private QSActionListener actionListener;
 
 	public void linkToQueue(OrderQueue oq) {
 		this.shopQueue = oq;
@@ -59,31 +65,127 @@ public class QueueStatus extends JPanel implements Observer {
 		super(new GridLayout(1, 2));
 
 		this.maxWaiters = maxWaiters;
-		//Order processing status
+		actionListener = new QSActionListener();
+		// Order processing status
 		prepareLeftPane();
 		// Waiter status
 		prepareRightPane();
-		
 
 	}
 
-	private void prepareLeftPane(){
+	/*
+	 * On the left side we have the Order Status Table
+	 */
+	private void prepareLeftPane() {
 
 		int cpHeight = this.getHeight();
 		this.getBounds().setSize(20, cpHeight);
-		// Order Status
-		JPanel catPanel = new JPanel(new BorderLayout());
-		catPanel.setBorder(BorderFactory.createTitledBorder("Order Status"));
+		JPanel splitWindow = new JPanel();
+		splitWindow.setLayout(new BoxLayout(splitWindow, BoxLayout.Y_AXIS));
+
+		// Show the Wait Time Settings Panel
+		prepareTimeSettingPanel(splitWindow);
+		// show the Orders status
+		prepareStatusTable(splitWindow);
+
+		this.add(splitWindow);
+	}
+
+	/*
+	 * Prepare the TimeSettings Pane
+	 */
+	private void prepareTimeSettingPanel(JPanel panel) {
+		JPanel timeSettingPanel = new JPanel();
+		timeSettingPanel.setLayout(new BoxLayout(timeSettingPanel, BoxLayout.Y_AXIS));
+		timeSettingPanel.setBorder(BorderFactory.createTitledBorder("Lead Time Settings"));
+		prepareSpeedControl(timeSettingPanel);
+		panel.add(timeSettingPanel);
+	}
+
+	/*
+	 * Render the Status Table
+	 */
+	private void prepareStatusTable(JPanel panel) {
+		// column names
 		String[] columnNames = { "CustomerID", "Item Count", "Status" };
 		orderModel = new DefaultTableModel(columnNames, 0);
+		// holding panel
+		JPanel catPanel = new JPanel();
+		catPanel.setLayout(new BoxLayout(catPanel, BoxLayout.Y_AXIS));
+		// Status Table
 		JTable statusTable = new JTable(orderModel);
 		JScrollPane tableHolder = new JScrollPane(statusTable);
+		catPanel.setBorder(BorderFactory.createTitledBorder("Order Status"));
+		// populate to GUI
 		catPanel.add(tableHolder);
-		this.add(catPanel);
-		
+		panel.add(catPanel);
 	}
-	
-	private void prepareRightPane(){
+
+	/*
+	 * Render panel to control Waiter speed
+	 */
+	private void prepareSpeedControl(JPanel panel) {
+		// item speed control
+		setSpeedPerItem(panel);
+		setPOSNotificationSpeed(panel);
+
+	}
+
+	/*
+	 * set speed per item
+	 */
+	private void setSpeedPerItem(JPanel panel) {
+		String[] comboItems = new String[10];
+		for (int i = 0; i < 10; i++) {
+			comboItems[i] = Integer.toString(i + 1) + " seconds";
+		}
+		waitSeconds = new JComboBox<>(comboItems);
+		waitSeconds.setSelectedIndex(9);
+
+		JLabel comboLabel = new JLabel("Prep. Lead Time(per item): ");
+		JButton comboButton = new JButton("Apply");
+		comboButton.addActionListener(actionListener);
+		comboButton.setActionCommand("WPI");
+		JPanel comboPanel = new JPanel();
+		comboPanel.setLayout(new GridLayout(1, 3, 5, 10));
+		comboPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED),
+				BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+		comboPanel.setPreferredSize(new Dimension(485, 35));
+		comboPanel.setMaximumSize(new Dimension(485, 35));
+		comboPanel.add(comboLabel);// label
+		comboPanel.add(waitSeconds);// combobox
+		comboPanel.add(comboButton);
+		panel.add(comboPanel);
+	}
+
+	private void setPOSNotificationSpeed(JPanel panel) {
+		String[] comboItems = new String[10];
+		for (int i = 0; i < 10; i++) {
+			comboItems[i] = Integer.toString(i + 1)+ " seconds";
+		}
+		newOrderSeconds = new JComboBox<>(comboItems);
+		newOrderSeconds.setSelectedIndex(9);
+
+		JLabel comboLabel = new JLabel("New Order Lead Time: ");
+		JButton comboButton = new JButton("Apply");
+		comboButton.addActionListener(actionListener);
+		comboButton.setActionCommand("NON");
+		JPanel comboPanel = new JPanel();
+		comboPanel.setLayout(new GridLayout(1, 3, 5, 10));
+		comboPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED),
+				BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+		comboPanel.setPreferredSize(new Dimension(485, 35));
+		comboPanel.setMaximumSize(new Dimension(485, 35));
+		comboPanel.add(comboLabel);// label
+		comboPanel.add(newOrderSeconds);// combobox
+		comboPanel.add(comboButton);
+		panel.add(comboPanel);
+	}
+
+	/*
+	 * On the right side we have the waiters and what they are doing
+	 */
+	private void prepareRightPane() {
 		JPanel wPanel = new JPanel();
 		// new GridLayout(maxWaiters+1, 1)
 		wPanel.setLayout(new BoxLayout(wPanel, BoxLayout.Y_AXIS));
@@ -97,58 +199,28 @@ public class QueueStatus extends JPanel implements Observer {
 		wScrollPane.setBorder(BorderFactory.createEmptyBorder());
 		this.add(wScrollPane);
 	}
-	
+
+	/*
+	 * Control for seting/resetting active waiter count
+	 */
 	private void prepareWaiterSelBox(Integer maxWaiters, JPanel wPanel) {
 		String[] comboItems = new String[maxWaiters];
 		for (int i = 0; i < maxWaiters; i++) {
 			comboItems[i] = Integer.toString(i + 1);
 		}
-		JComboBox waiterNumber = new JComboBox<>(comboItems);
+		waiterNumber = new JComboBox<>(comboItems);
 		waiterNumber.setSelectedIndex(1);
 
 		JLabel comboLabel = new JLabel("Active Waiter count: ");
 		JButton comboButton = new JButton("Apply");
-		comboButton.addActionListener(new ActionListener() {
-
-			@Override
-			/*
-			 * The is the action listener for the Apply button. The number of
-			 * threads that should be active have their "exit" flag set as
-			 * false, and started if they are not alive. Else, their flag is set
-			 * to "Exit" so that they go to Stop
-			 */
-			public void actionPerformed(ActionEvent e) {
-				if (e.getActionCommand().equals("WAIT")) {
-					
-					Integer maxWaiters = waiterNumber.getSelectedIndex();
-					LogKeeper.getInstance().addLog("Manager/QueueStatus", "Setting Active Waiters to "+ (maxWaiters+1));
-					for (int i = 0; i < waiterThreadArray.size(); i++) {
-						// for threads more than specified number.
-						if (i > (maxWaiters)) {
-							if (waiterThreadArray.get(i).isAlive()) {
-								// stop them.
-								waiterArray.get(i).setExit(true);
-							}
-						} else {
-							// threads within required nuber
-							if (!(waiterThreadArray.get(i).isAlive())) {
-								// if not started, start them.
-								waiterArray.get(i).setExit(false);
-								waiterThreadArray.get(i).start();
-							}
-						}
-					}
-				}
-				// refresh the model
-				refreshOrderModel();
-			}
-		});
+		comboButton.addActionListener(actionListener);
 		comboButton.setActionCommand("WAIT");
 		JPanel comboPanel = new JPanel();
 		comboPanel.setLayout(new GridLayout(1, 3, 5, 10));
-		comboPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
-		comboPanel.setPreferredSize(new Dimension(450, 25));
-		comboPanel.setMaximumSize(new Dimension(450, 25));
+		comboPanel.setBorder((BorderFactory.createCompoundBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED),
+				BorderFactory.createEmptyBorder(5, 5, 5, 5))));
+		comboPanel.setPreferredSize(new Dimension(450, 35));
+		comboPanel.setMaximumSize(new Dimension(450, 35));
 		comboPanel.add(comboLabel);// label
 		comboPanel.add(waiterNumber);// combobox
 		comboPanel.add(comboButton);
@@ -157,7 +229,8 @@ public class QueueStatus extends JPanel implements Observer {
 	}
 
 	/*
-	 * add the dynamic waiter text boxes
+	 * Each waiter has a status area, a JTextbox. add the dynamic waiter text
+	 * boxes
 	 */
 	private void prepareWaiterStatusBoxes(JPanel wPanel) {
 
@@ -174,6 +247,9 @@ public class QueueStatus extends JPanel implements Observer {
 		}
 	}
 
+	/*
+	 * Auto update the Order status and Waiter text boxes
+	 */
 	private void refreshOrderModel() {
 
 		// thread status update.
@@ -240,7 +316,7 @@ public class QueueStatus extends JPanel implements Observer {
 	 * This method will check the Orders Collection and update the JTable
 	 */
 	private void orderStatusUpdate() {
-		
+
 		String status = new String("");
 		Collection<OrderEntry> collection = shopQueue.getCollection();
 		Iterator<OrderEntry> iterator = collection.iterator();
@@ -265,22 +341,20 @@ public class QueueStatus extends JPanel implements Observer {
 					waiterStatus[index]
 							.setText("Processing Order for Customer ID" + oe.getCustomerID() + System.lineSeparator());
 					try {
-						if(oe.getOrderCount() > 0){
-						for (int i = 0; i < oe.getOrderCount(); i++) {
-							
-							status = Integer.toString(i+1) + ")" 
-									+ oe.getItem(i).getQuantity()+"No(s). "		
-									+ oe.getItem(i).getItem()
-									+ System.lineSeparator();
-							waiterStatus[index].append(status); 
-	
+						if (oe.getOrderCount() > 0) {
+							for (int i = 0; i < oe.getOrderCount(); i++) {
+
+								status = Integer.toString(i + 1) + ")" + oe.getItem(i).getQuantity() + "No(s). "
+										+ oe.getItem(i).getItem() + System.lineSeparator();
+								waiterStatus[index].append(status);
+
+							}
 						}
-						}
-					} 
-					catch (Exception e) {
+					} catch (Exception e) {
 						e.printStackTrace();
-						LogKeeper.getInstance().addLog(Thread.currentThread().getName(), "Error in adding Items to Status", e);
-						
+						LogKeeper.getInstance().addLog(Thread.currentThread().getName(),
+								"Error in adding Items to Status", e);
+
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -295,6 +369,57 @@ public class QueueStatus extends JPanel implements Observer {
 	public void update(Observable o, Object arg) {
 		refreshOrderModel();
 
+	}
+
+	class QSActionListener implements ActionListener {
+
+		public QSActionListener() {
+			super();
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (e.getActionCommand().equals("NON")) {
+
+				Integer newOrderTime = newOrderSeconds.getSelectedIndex();
+				LogKeeper.getInstance().addLog("Manager/QueueStatus",
+						"New Order Lead Time = " + Manager.POS_SERVICE_TIME.toString());
+				LogKeeper.getInstance().addLog("Manager/QueueStatus",
+						"Setting New Order Lead Time = " + (newOrderTime + 1));
+				Manager.POS_SERVICE_TIME = newOrderTime.intValue() + 1;
+				JOptionPane.showMessageDialog(new JFrame(),
+						"New Order Lead Time set to " + Manager.POS_SERVICE_TIME + " seconds");
+			} else if (e.getActionCommand().equals("WPI")) {
+
+				Integer waitTime = waitSeconds.getSelectedIndex();
+				LogKeeper.getInstance().addLog("Manager/QueueStatus",
+						"Prep.Lead Time =  " + Manager.WAIT_TIME_PER_ITEM);
+				LogKeeper.getInstance().addLog("Manager/QueueStatus", "Setting Prep.Lead Time =  " + (waitTime + 1));
+				Manager.WAIT_TIME_PER_ITEM = waitTime.intValue() + 1;
+			} else if (e.getActionCommand().equals("WAIT")) {
+
+				Integer maxWaiters = waiterNumber.getSelectedIndex();
+				LogKeeper.getInstance().addLog("Manager/QueueStatus", "Setting Active Waiters to " + (maxWaiters + 1));
+				for (int i = 0; i < waiterThreadArray.size(); i++) {
+					// for threads more than specified number.
+					if (i > (maxWaiters)) {
+						if (waiterThreadArray.get(i).isAlive()) {
+							// stop them.
+							waiterArray.get(i).setExit(true);
+						}
+					} else {
+						// threads within required number
+						if (!(waiterThreadArray.get(i).isAlive())) {
+							// if not started, start them.
+							waiterArray.get(i).setExit(false);
+							waiterThreadArray.get(i).start();
+						}
+					}
+				}
+				// refresh the model
+				refreshOrderModel();
+			}
+		}
 	}
 
 }

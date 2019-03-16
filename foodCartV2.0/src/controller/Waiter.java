@@ -3,8 +3,7 @@
  */
 package controller;
 
-import java.util.Observable;
-import java.util.logging.Level;
+
 
 import log.LogKeeper;
 import model.OrderEntry;
