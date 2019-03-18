@@ -12,10 +12,10 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 /**
- * @author Vimal This is the Singleton Logger. We use the java.util.logging
- *         classes to execute logging logger is the logging object, and
- *         logKeeper is the interface in FoodCart for logger Serializing is
- *         handled by the LogManager
+ * This is the Singleton Logger. We use the java.util.logging classes to execute
+ * logging logger is the logging object, and logKeeper is the interface in
+ * FoodCart for logger Serializing is handled by the LogManager
+ * @author Vimal 
  */
 public class LogKeeper {
 
@@ -75,11 +75,11 @@ public class LogKeeper {
 	public void addLog(String actor, String message, Throwable thrown) {
 		logger.log(Level.SEVERE, actor + LogFormatter.fieldSeparator + message, thrown);
 	}
-	
-	public String getLogMessage(){
+
+	public String getLogMessage() {
 		Handler[] myHandlers = logger.getHandlers();
 		LogHandler one = (LogHandler) myHandlers[0];
 		return one.getLogText();
-		
+
 	}
 }

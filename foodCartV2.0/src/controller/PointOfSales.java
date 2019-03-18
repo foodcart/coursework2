@@ -9,11 +9,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 
+import javax.swing.JPanel;
+
 import log.LogKeeper;
 import model.InvalidQuantityException;
 import model.Order;
 import model.OrderEntry;
 import model.OrderQueue;
+import view.NorthPanel;
 
 /**
  * @author Vimal this is the Point of Sales Thread This will add Customers and
@@ -27,13 +30,19 @@ public class PointOfSales implements Runnable {
 	private OrderQueue myQueue;
 	private boolean autoMode;
 	Collection<Order> orders;
+	private NorthPanel toolbarRef;
 
-	public PointOfSales(OrderQueue oQueue, Collection<Order> orders) {
+	public PointOfSales(OrderQueue oQueue, Collection<Order> orders, NorthPanel tbRef) {
 		this.myQueue = oQueue;
 		this.autoMode = true;
 		this.orders = orders;
+		this.toolbarRef = tbRef;
 	}
 
+	public boolean getAutoMode(){
+		return autoMode;
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -83,14 +92,15 @@ public class PointOfSales implements Runnable {
 			oEntry = this.myQueue.add(currentCustomer, ordersArray.toArray(new Order[ordersArray.size()]));
 		}
 		// add the terminator item.
-		try {
+		/*try {
 			this.myQueue.add(Manager.TERMINATOR,
 					new Order[] { new Order(Manager.TERMINATOR, Manager.TERMINATOR, null, 1, null, 1, 1) });
 		} catch (InvalidQuantityException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		this.autoMode = false;// end automode
+		toolbarRef.setButtonState("new",true);
 		LogKeeper.getInstance().addLog(Thread.currentThread().getName(), "Orders added");
 	}
 

@@ -33,10 +33,12 @@ import model.OrderEntry;
 import model.OrderQueue;
 import model.OrderStatus;
 
+
 public class QueueStatus extends JPanel implements Observer {
 
 	/**
-	 * 
+	 * @author Vimal
+	 * @author Gabi
 	 */
 	private static final long serialVersionUID = -1695282276004883099L;
 	private DefaultTableModel orderModel;
@@ -51,7 +53,7 @@ public class QueueStatus extends JPanel implements Observer {
 	private JComboBox newOrderSeconds;
 	private QSActionListener actionListener;
 
-	public void linkToQueue(OrderQueue oq) {
+	public void createLink(OrderQueue oq) {
 		this.shopQueue = oq;
 	}
 

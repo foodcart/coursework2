@@ -13,10 +13,15 @@ import controller.Manager;
 import log.LogKeeper;
 import view.QueueStatus;
 
+/**
+ * This is the Shop Queue - the common object between all threads in the Coffee Shop
+ * @author Vimal
+ */
 public class OrderQueue extends Observable {
+
 	private ConcurrentSkipListMap<Integer, OrderEntry> orderQueue;
 	private Integer newCount;
-	private QueueStatus queueStatus;
+	private QueueStatus queueStatus; 
 
 	public OrderQueue(QueueStatus queue) {
 		orderQueue = new ConcurrentSkipListMap<Integer, OrderEntry>();

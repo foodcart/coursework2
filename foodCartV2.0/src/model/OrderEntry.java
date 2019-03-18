@@ -5,7 +5,15 @@ import java.util.logging.Level;
 
 import controller.Manager;
 
+/**
+ * This is the Orders per customer. 
+ * OrderEntry gets added to the OrderQueue
+ * This is class extends Observable
+ * @author Vimal
+ */
+
 public class OrderEntry extends Observable {
+	
 	private Order[] orders;
 	private String status;
 	private String processedByThread;
