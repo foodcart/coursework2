@@ -107,7 +107,7 @@ public class QueueStatus extends JPanel implements Observer {
 	 */
 	private void prepareStatusTable(JPanel panel) {
 		// column names
-		String[] columnNames = { "CustomerID", "Item Count", "Status" };
+		String[] columnNames = { "CustomerID", "Item Count", "Status", "Waiting Staff" };
 		orderModel = new DefaultTableModel(columnNames, 0);
 		// holding panel
 		JPanel catPanel = new JPanel();
@@ -331,7 +331,7 @@ public class QueueStatus extends JPanel implements Observer {
 			OrderEntry oe = iterator.next();
 			if (oe.getCustomerID().equals(Manager.TERMINATOR))
 				break;
-			orderModel.insertRow(row, new Object[] { oe.getCustomerID(), oe.getItemCount(), oe.getStatus() });
+			orderModel.insertRow(row, new Object[] { oe.getCustomerID(), oe.getItemCount(), oe.getStatus(), oe.getProcessingThread() });
 			row++;
 			// parallel update to waiter status
 			String processingThread = oe.getProcessingThread();
