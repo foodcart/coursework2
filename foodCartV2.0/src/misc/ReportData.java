@@ -1,6 +1,6 @@
 package misc;
 
-/*
+/* 
  * This is a temporary storage for Report Data
  */
 public class ReportData {

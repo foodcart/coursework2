@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  * This is the TableModel for Reporting Panel, allows Double and String in same model
- * @author Vimal
+ * @author Anwar
  *
  */
 public class ReportTableModel extends DefaultTableModel {
