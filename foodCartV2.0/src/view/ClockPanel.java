@@ -8,8 +8,9 @@ import java.util.Date;
 
 class ClockPanel extends JPanel {
 
-	  /**
-	 * 
+	 /**
+	 * This is the Panel for showing Date and Time
+	 * @author Vimal 
 	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel clock = new JLabel();

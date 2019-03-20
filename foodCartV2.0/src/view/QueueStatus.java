@@ -399,7 +399,7 @@ public class QueueStatus extends JPanel implements Observer {
 				LogKeeper.getInstance().addLog("Manager/QueueStatus", "Setting Prep.Lead Time =  " + (waitTime + 1));
 				Manager.WAIT_TIME_PER_ITEM = waitTime.intValue() + 1;
 				JOptionPane.showMessageDialog(new JFrame(),
-						"Lead Time in Kitchen set to " + Manager.POS_SERVICE_TIME + " seconds");
+						"Lead Time in Kitchen set to " + Manager.WAIT_TIME_PER_ITEM + " seconds");
 			
 			} else if (e.getActionCommand().equals("WAIT")) {
 
@@ -422,7 +422,7 @@ public class QueueStatus extends JPanel implements Observer {
 					}
 				}
 				JOptionPane.showMessageDialog(new JFrame(),
-						"Number of Active Waiters set to " + maxWaiters);
+						"Number of Active Waiters set to " + (maxWaiters.intValue()+1));
 				// refresh the model
 				refreshOrderModel();
 			}
