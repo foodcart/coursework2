@@ -103,5 +103,13 @@ public class PointOfSales implements Runnable {
 		toolbarRef.setButtonState("new",true);
 		LogKeeper.getInstance().addLog(Thread.currentThread().getName(), "Orders added");
 	}
+/**
+ * Method to get Orders collection
+ * @return
+ */
+	public Collection<Order> getOrders() {
+	
+		return orders;
+	}
 
 }
