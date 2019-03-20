@@ -44,29 +44,39 @@ public class NorthPanel extends JPanel {
 
 		// add the buttons
 		JPanel actionBox = new JPanel(new FlowLayout(FlowLayout.CENTER));
-
+		/*Button to start taking new Order*/
 		newOrder = new JButton("New Order");
 		newOrder.addActionListener(al);
 		newOrder.setActionCommand("NEWO");
 		newOrder.setToolTipText("Take New Order");
 		actionBox.add(newOrder);
-
+		
+		/*Button for Display Order List*/
 		showOrders = new JButton("Orders List");
 		showOrders.addActionListener(al);
 		showOrders.setActionCommand("LISO");
 		showOrders.setToolTipText("View List of all Orders");
 		actionBox.add(showOrders);
-
+		
+		/*Button for Sales Report*/
 		printSummary = new JButton("Sales Report");
 		printSummary.addActionListener(al);
 		printSummary.setActionCommand("SUMM");
 		printSummary.setToolTipText("Generate Sales Report");
 		actionBox.add(printSummary);
-
+		
+		/*Add the button for showing shopping queue*/
 		showQueue = new JButton("Shop Queue");
 		showQueue.addActionListener(al);
 		showQueue.setActionCommand("SQUE");
 		printSummary.setToolTipText("View Shop Queue");
+		actionBox.add(showQueue);
+		
+		/*button for display log*/
+		showQueue = new JButton("Show Log");
+		showQueue.addActionListener(al);
+		showQueue.setActionCommand("SLOG");
+		printSummary.setToolTipText("Display Application Log");
 		actionBox.add(showQueue);
 		// add actionbox to the Panel
 		this.add(actionBox);
