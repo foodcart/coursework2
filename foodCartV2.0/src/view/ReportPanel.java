@@ -73,6 +73,22 @@ public class ReportPanel extends JPanel {
 	public void preparePanelForDisplay(){
 		generateReport(false);
 	}
+	
+	/**
+	 * Call the report in a new JFrame. This call is expected
+	 * in the system.exit of the Manager, after closing the current window.
+	 */
+	public void popupReport(){
+		generateReport(true);
+	}
+	
+	
+	
+	
+	/**
+	 * this is the private method  to create panels and labels for the report
+	 * @param boolean => is call on window close event or not
+	 */
 	private void generateReport(boolean onClose) {
 		misc.ReportData data;
 		double totalrevenue = 0;
