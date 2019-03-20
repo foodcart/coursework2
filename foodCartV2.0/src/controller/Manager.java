@@ -74,16 +74,16 @@ public class Manager extends JFrame {
 	private QueueStatus queueStatus;
 	// order Panel
 	private OrderPanel orderPanel;
-	//buttons panel
+	// buttons panel
 	private NorthPanel northPanel;
 	// the end time sales report
 	private ReportPanel reportPanel;
-	//List of Orders
+	// List of Orders
 	private ListOfOrdersPanel listPanel;
 	// the runtime log
 	private static String log;
 
-	/*
+	/**
 	 * This class is also a SingleTon, so return its instance.
 	 */
 	public static Manager getInstance(String jarDir, Integer maxWaiters) {
@@ -92,7 +92,7 @@ public class Manager extends JFrame {
 		return myInstance;
 	}
 
-	/*
+	/**
 	 * Return an already existing instance.
 	 */
 	public static Manager getInstance() {
@@ -110,7 +110,15 @@ public class Manager extends JFrame {
 	public static void dialog(String msg, int msgtyp) {
 		JOptionPane.showMessageDialog(null, msg, "Message", msgtyp);
 	}
-	/*
+	
+	/**
+	 * Display the Application Log in a new Window
+	 */
+	public void showLog(){
+		generateLogReport(false);
+	}
+
+	/**
 	 * Private constructor
 	 */
 	private Manager(String jarDir, Integer maxWaiter) {
@@ -122,8 +130,10 @@ public class Manager extends JFrame {
 		startUp(jarDir, maxWaiter);
 	}
 
-	/*
-	 * Startup the application
+	/**
+	 * Startup the application, this method starts up components and threads
+	 * @param jarDir - the root folder
+	 * @param WaiterCount - max number of Waiting Staff
 	 */
 	private void startUp(String jarDir, Integer WaiterCount) {
 
@@ -132,26 +142,23 @@ public class Manager extends JFrame {
 		log = new String();
 		// setup the Application Window.
 		preparePanels(WaiterCount);
-		// initialize the OrderQueue
+		/* initialize the OrderQueue */
 		initShopQueue(jarDir, queueStatus);
-		// init the 5 waiter threads.
+		/* init the 5 waiter threads. */
 		initWaiterArray(WaiterCount);
-		// init the POS
+		/* init the POS */
 		initPOS();
-		// start the POS thread
+		/* start the POS thread */
 		startPOS();
-		// start 2 waiters
+		/* start 2 waiters */
 		startWaiter(0);
 		startWaiter(1);
-		// startWaiter(2);
-		// startWaiter(3);
-		// startWaiter(4);
 		logKeeper.addLog(myName, "Startup complete.");
 		this.setVisible(true);
-		joinAll(5);
+		// joinAll(5);
 	}
 
-	/*
+	/**
 	 * Init the Logger
 	 */
 	private void initLogger(String jarDir) {
@@ -164,7 +171,7 @@ public class Manager extends JFrame {
 		}
 	}
 
-	/*
+	/**
 	 * This method will initialize the Shop Queue before opening it for
 	 * customers
 	 */
@@ -173,24 +180,24 @@ public class Manager extends JFrame {
 
 		queueStatus.createLink(shopQueue);
 		logKeeper.addLog(myName, "...Starting up Shop Queue ");
-		/* read the orders file to TreeMap*/
+		/* read the orders file to TreeMap */
 		try {
-			/*read orderlist*/
+			/* read orderlist */
 			orderList = new OrderList(jarDir + File.separator + "orderlist.db");
 			logKeeper.addLog(myName, "...OrderList loaded from " + jarDir + File.separator + "orderlist.db");
 		} catch (Exception e) {
 			logKeeper.addLog(myName, "...OrderList load failed", e);
 			;
 		}
-		//keep the order taking screen ready
+		// keep the order taking screen ready
 		try {
-			/* read itemlist from file*/
+			/* read itemlist from file */
 			itemList = new ItemList(jarDir + File.separator + "menuitems.db");
-			/*send this to Orders Panel..to help take new orders*/
+			/* send this to Orders Panel..to help take new orders */
 			orderPanel.createLink(itemList, shopQueue, orderList);
-			/*keep orderList reference in reportPanel*/
+			/* keep orderList reference in reportPanel */
 			reportPanel.createLink(orderList, itemList);
-			/* also keep reference with List of Orders Panel*/
+			/* also keep reference with List of Orders Panel */
 			listPanel.createLink(orderList, itemList);
 		} catch (Exception e) {
 			logKeeper.addLog(myName, "Failed to Load MenuItems", e);
@@ -294,14 +301,23 @@ public class Manager extends JFrame {
 		// this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent we) {
-				generateLogReport(true);
+				// generateLogReport(true);
+				exitWithSalesReport();
 			}
 		});
 	}
 
-	private void generateLogReport(boolean b) {
+	private void exitWithSalesReport() {
 		this.setVisible(false);
 		this.dispose();
+		reportPanel.popupReport();
+	}
+
+	/**
+	 * This method shows the Application Log in a new Window
+	 * @param b
+	 */
+	private void generateLogReport(boolean exit) {
 		Color white = new Color(255, 255, 255);
 
 		JTextArea logArea = new JTextArea();
@@ -310,12 +326,19 @@ public class Manager extends JFrame {
 		JFrame logFrame = new JFrame("Food Cart: Log File");
 		logFrame.setSize(900, 600);// 1200 width : 600 height
 		logFrame.setLocationRelativeTo(null);// to set to center
-		logFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		logFrame.getContentPane().add(logPane);
 		log = logKeeper.getLogMessage();
 		logArea.append(log);
 		logArea.setEditable(false);
 		logFrame.getContentPane().validate();
+		if(exit){
+			/*
+			 * close this window if asked to exit
+			 */
+			logFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setVisible(false);
+			this.dispose();
+		}
 		logFrame.setVisible(true);
 
 	}
@@ -344,6 +367,14 @@ public class Manager extends JFrame {
 		// this.add(queueStatus, BorderLayout.WEST);
 	}
 
+	/**
+	 * This method will join the threads and when join is complete will trigger
+	 * system.exit
+	 * 
+	 * @deprecated as of Sprint 2, we will no longer use this method as we are
+	 *             closing only when user presses close
+	 * @param Max
+	 */
 	private void joinAll(Integer Max) {
 		// join waiters
 		for (int i = 0; i < Max; i++) {
@@ -384,32 +415,40 @@ public class Manager extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			switch (e.getActionCommand()) {
-			// show queue
+			/* show queue*/
 			case "SQUE":
 				viewAnchor.removeAll();
 				viewAnchor.add(queueStatus, BorderLayout.CENTER);
-				viewAnchor.revalidate(); viewAnchor.repaint();
+				viewAnchor.revalidate();
+				viewAnchor.repaint();
 				break;
-			// generate summary report
+			/* generate summary report*/
 			case "SUMM":
 				viewAnchor.removeAll();
 				reportPanel.preparePanelForDisplay();
-				viewAnchor.add(reportPanel,BorderLayout.CENTER);
-				viewAnchor.revalidate(); viewAnchor.repaint();
+				viewAnchor.add(reportPanel, BorderLayout.CENTER);
+				viewAnchor.revalidate();
+				viewAnchor.repaint();
 				break;
-			// show list of orders
+			/* show list of orders*/
 			case "LISO":
 				viewAnchor.removeAll();
 				listPanel.preparePanelForDisplay();
-				viewAnchor.add(listPanel,BorderLayout.CENTER);
-				viewAnchor.revalidate(); viewAnchor.repaint();
+				viewAnchor.add(listPanel, BorderLayout.CENTER);
+				viewAnchor.revalidate();
+				viewAnchor.repaint();
 				break;
-			// take new order
+			/* take new order*/
 			case "NEWO":
 				orderPanel.setDefaultViews();
 				viewAnchor.removeAll();
 				viewAnchor.add(orderPanel, BorderLayout.CENTER);
-				viewAnchor.revalidate(); viewAnchor.repaint();
+				viewAnchor.revalidate();
+				viewAnchor.repaint();
+				break;
+			/* show the Log*/
+			case "SLOG":
+				myInstance.showLog();
 				break;
 			}
 		}
