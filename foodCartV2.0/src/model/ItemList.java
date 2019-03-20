@@ -16,6 +16,7 @@ import java.util.Scanner;
  * This class is used to record the menu items and read from the already provided text file
  * @author Anwar Kamil
  * @author Vimal
+ * @Vishnu - adaptation to V2.0
  *
  */
 public class ItemList {

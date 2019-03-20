@@ -19,8 +19,11 @@ import model.OrderQueue;
 import view.NorthPanel;
 
 /**
- * @author Vimal this is the Point of Sales Thread This will add Customers and
- *         their Orders from the Ordelist to the Shop Queue.
+ * this is the Point of Sales Thread This will add Customers and
+ * their Orders from the Ordelist to the Shop Queue.
+ * 
+ * @author Vimal 
+ * @author Vishnu - add getters for Orders
  */
 public class PointOfSales implements Runnable {
 	/**
@@ -108,7 +111,6 @@ public class PointOfSales implements Runnable {
  * @return
  */
 	public Collection<Order> getOrders() {
-	
 		return orders;
 	}
 
